@@ -34,6 +34,17 @@
     return link ? link.getAttribute('href') : './index.md';
   }
 
+  function absoluteMarkdownUrl() {
+    var href = markdownUrl();
+    if (/^https?:\/\//i.test(href)) return href;
+    try {
+      return new URL(href, pageUrl()).href;
+    } catch (e) {
+      var path = cfg.pagePath || '/';
+      return (cfg.origin || '') + (path === '/' ? '/index.md' : path + 'index.md');
+    }
+  }
+
   function pageUrl() {
     var canonical = document.querySelector('link[rel="canonical"]');
     return canonical ? canonical.href : cfg.origin + (cfg.pagePath || '/');
@@ -50,18 +61,34 @@
     });
   }
 
-  function aiPrompt(md) {
-    return 'Read this documentation page and answer my questions about it.\n\nSource: ' + pageUrl() + '\n---\n' + md;
+  function fullAiPrompt(md) {
+    return [
+      'Read this documentation page and answer my questions about it.',
+      '',
+      'Source: ' + pageUrl(),
+      'Markdown: ' + absoluteMarkdownUrl(),
+      cfg.mcpUrl ? 'Docs MCP: ' + cfg.mcpUrl : '',
+      '',
+      md,
+    ].filter(function (line) { return line !== ''; }).join('\n');
   }
 
-  function truncate(text, max) {
-    if (text.length <= max) return text;
-    return text.slice(0, max) + '\n\n[Content truncated for URL length limits.]';
+  function shortAiPrompt() {
+    var lines = [
+      'Read this documentation page and answer my questions about it.',
+      '',
+      'Page: ' + pageUrl(),
+      'Markdown: ' + absoluteMarkdownUrl(),
+    ];
+    if (cfg.mcpUrl) lines.push('Docs MCP (search all pages): ' + cfg.mcpUrl);
+    lines.push('');
+    lines.push('Fetch the Markdown URL above for full page content, or use the docs MCP server to search related pages.');
+    return lines.join('\n');
   }
 
-  function copyText(text) {
+  function writeClipboard(text) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      return navigator.clipboard.writeText(text).then(function () { showToast('Copied to clipboard'); });
+      return navigator.clipboard.writeText(text);
     }
     var ta = document.createElement('textarea');
     ta.value = text;
@@ -69,15 +96,33 @@
     ta.select();
     document.execCommand('copy');
     document.body.removeChild(ta);
-    showToast('Copied to clipboard');
     return Promise.resolve();
   }
 
-  function openAi(urlBase, maxLen) {
+  function copyText(text, opts) {
+    opts = opts || {};
+    return writeClipboard(text).then(function () {
+      if (!opts.silent) showToast(opts.message || 'Copied to clipboard');
+    });
+  }
+
+  function openInAi(baseUrl, label) {
     fetchMarkdown().then(function (md) {
-      var q = encodeURIComponent(truncate(aiPrompt(md), maxLen));
-      window.open(urlBase + q, '_blank', 'noopener,noreferrer');
-    }).catch(function () { showToast('Could not load page markdown'); });
+      var short = shortAiPrompt();
+      var url = baseUrl + encodeURIComponent(short);
+      if (url.length > 7500) {
+        short = 'Read this documentation and answer my questions.\n\nPage: ' + pageUrl() + '\nMarkdown: ' + absoluteMarkdownUrl();
+        url = baseUrl + encodeURIComponent(short);
+      }
+      return writeClipboard(fullAiPrompt(md)).then(function () {
+        window.open(url, '_blank', 'noopener,noreferrer');
+        showToast('Opening ' + label + ' — full page markdown copied to clipboard');
+      });
+    }).catch(function () {
+      var url = baseUrl + encodeURIComponent(shortAiPrompt());
+      window.open(url, '_blank', 'noopener,noreferrer');
+      showToast('Opened ' + label + ' with page links (could not load markdown to copy)');
+    });
   }
 
   function mcpJsonSnippet() {
@@ -140,12 +185,12 @@
     var ai = document.createElement('div');
     ai.className = 'gp-contextual-section';
     ai.appendChild(menuItem({
-      icon: 'chatgpt', title: 'Open in ChatGPT', desc: 'Ask ChatGPT about this page', external: true,
-      onClick: function (e) { e.preventDefault(); openAi('https://chatgpt.com/?q=', 6000); },
+      icon: 'chatgpt', title: 'Open in ChatGPT', desc: 'Open ChatGPT with page links; full markdown copied', external: true,
+      onClick: function (e) { e.preventDefault(); openInAi('https://chatgpt.com/?q=', 'ChatGPT'); },
     }));
     ai.appendChild(menuItem({
-      icon: 'claude', title: 'Open in Claude', desc: 'Ask Claude about this page', external: true,
-      onClick: function (e) { e.preventDefault(); openAi('https://claude.ai/new?q=', 12000); },
+      icon: 'claude', title: 'Open in Claude', desc: 'Open Claude with page links; full markdown copied', external: true,
+      onClick: function (e) { e.preventDefault(); openInAi('https://claude.ai/new?q=', 'Claude'); },
     }));
     sections.push(ai);
 
