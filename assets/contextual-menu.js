@@ -231,6 +231,12 @@
     return sections;
   }
 
+  function placeDescriptionAfterTitle(main, row) {
+    var desc = main.querySelector('.page-description');
+    if (!desc || desc.previousElementSibling === row) return;
+    main.insertBefore(desc, row.nextSibling);
+  }
+
   function structurePageHeader(header) {
     var main = header.querySelector('.page-header-main');
     if (!main) {
@@ -259,6 +265,8 @@
       row.appendChild(existingWrap);
     }
 
+    placeDescriptionAfterTitle(main, row);
+
     return { header: header, titleRow: row, main: main };
   }
 
@@ -276,7 +284,6 @@
 
     var desc = content.querySelector('.page-description');
     var h1 = content.querySelector('h1');
-    if (desc) main.appendChild(desc);
 
     var row = document.createElement('div');
     row.className = 'page-title-row';
@@ -290,6 +297,8 @@
       fallback.textContent = title;
       row.appendChild(fallback);
     }
+
+    if (desc) main.appendChild(desc);
 
     header.appendChild(main);
     content.parentNode.insertBefore(header, content);
