@@ -1,0 +1,19 @@
+{
+  "id": "spp",
+  "hostname": "docs.splitpayplugin.com",
+  "origin": "https://docs.splitpayplugin.com",
+  "title": "Split Pay Plugin Documentation",
+  "productName": "Split Pay Plugin",
+  "mcpName": "split-pay-plugin-docs",
+  "template": "assets",
+  "assetPath": "assets",
+  "setupSkillUrl": "/getting-started/ai-assistant/",
+  "skills": [
+    {
+      "uri": "skill://split-pay-setup",
+      "name": "split-pay-setup",
+      "title": "Split Pay Setup Skill",
+      "path": "assets/skill/split-pay-setup/SKILL.md"
+    }
+  ]
+}

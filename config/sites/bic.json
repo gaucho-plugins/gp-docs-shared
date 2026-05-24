@@ -1,0 +1,11 @@
+{
+  "id": "bic",
+  "hostname": "docs.blockedinchinaplugin.com",
+  "origin": "https://docs.blockedinchinaplugin.com",
+  "title": "Blocked in China Docs",
+  "productName": "Blocked in China",
+  "mcpName": "blocked-in-china-docs",
+  "template": "assets",
+  "assetPath": "assets",
+  "skills": []
+}

@@ -1,0 +1,11 @@
+{
+  "id": "sic",
+  "hostname": "docs.speedinchinaplugin.com",
+  "origin": "https://docs.speedinchinaplugin.com",
+  "title": "Speed in China Docs",
+  "productName": "Speed in China",
+  "mcpName": "speed-in-china-docs",
+  "template": "assets",
+  "assetPath": "assets",
+  "skills": []
+}

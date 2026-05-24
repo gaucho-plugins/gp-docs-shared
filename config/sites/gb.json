@@ -1,0 +1,11 @@
+{
+  "id": "gb",
+  "hostname": "docs.gytabuyback.com",
+  "origin": "https://docs.gytabuyback.com",
+  "title": "GYTA Buyback Docs",
+  "productName": "GYTA Buyback",
+  "mcpName": "gyta-buyback-docs",
+  "template": "assets",
+  "assetPath": "assets",
+  "skills": []
+}

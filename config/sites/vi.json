@@ -1,0 +1,11 @@
+{
+  "id": "vi",
+  "hostname": "docs.versioninfoplugin.com",
+  "origin": "https://docs.versioninfoplugin.com",
+  "title": "Version Info Docs",
+  "productName": "Version Info",
+  "mcpName": "version-info-docs",
+  "template": "root",
+  "assetPath": "",
+  "skills": []
+}

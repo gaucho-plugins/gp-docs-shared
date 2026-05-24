@@ -1,0 +1,20 @@
+{
+  "name": "gp-docs-shared",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared contextual menu, markdown build, and MCP worker for Gaucho Plugins docs sites",
+  "scripts": {
+    "build": "node scripts/build-docs.mjs",
+    "worker:dev": "cd mcp-worker && wrangler dev",
+    "worker:deploy": "cd mcp-worker && wrangler deploy",
+    "worker:upload-index": "node scripts/upload-kv-index.mjs"
+  },
+  "dependencies": {
+    "turndown": "^7.2.0",
+    "turndown-plugin-gfm": "^1.0.2"
+  },
+  "devDependencies": {
+    "wrangler": "^4.14.0"
+  }
+}

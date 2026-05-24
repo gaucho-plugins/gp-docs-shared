@@ -1,0 +1,28 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gp-docs-mcp",
+  "main": "src/index.js",
+  "compatibility_date": "2026-01-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "kv_namespaces": [
+    {
+      "binding": "DOCS_INDEX",
+      "id": "d02b0a326f984103b4a3d520f259de45",
+      "preview_id": "d02b0a326f984103b4a3d520f259de45"
+    }
+  ],
+  "routes": [
+    { "pattern": "docs.blockedinchinaplugin.com/mcp", "zone_name": "blockedinchinaplugin.com" },
+    { "pattern": "docs.blockedinchinaplugin.com/.well-known/mcp", "zone_name": "blockedinchinaplugin.com" },
+    { "pattern": "docs.speedinchinaplugin.com/mcp", "zone_name": "speedinchinaplugin.com" },
+    { "pattern": "docs.speedinchinaplugin.com/.well-known/mcp", "zone_name": "speedinchinaplugin.com" },
+    { "pattern": "docs.cognitivecartplugin.com/mcp", "zone_name": "cognitivecartplugin.com" },
+    { "pattern": "docs.cognitivecartplugin.com/.well-known/mcp", "zone_name": "cognitivecartplugin.com" },
+    { "pattern": "docs.gytabuyback.com/mcp", "zone_name": "gytabuyback.com" },
+    { "pattern": "docs.gytabuyback.com/.well-known/mcp", "zone_name": "gytabuyback.com" },
+    { "pattern": "docs.versioninfoplugin.com/mcp", "zone_name": "versioninfoplugin.com" },
+    { "pattern": "docs.versioninfoplugin.com/.well-known/mcp", "zone_name": "versioninfoplugin.com" },
+    { "pattern": "docs.splitpayplugin.com/mcp", "zone_name": "splitpayplugin.com" },
+    { "pattern": "docs.splitpayplugin.com/.well-known/mcp", "zone_name": "splitpayplugin.com" }
+  ]
+}

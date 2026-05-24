@@ -1,0 +1,11 @@
+{
+  "id": "cc",
+  "hostname": "docs.cognitivecartplugin.com",
+  "origin": "https://docs.cognitivecartplugin.com",
+  "title": "CognitiveCart Documentation",
+  "productName": "CognitiveCart",
+  "mcpName": "cognitive-cart-docs",
+  "template": "assets",
+  "assetPath": "assets",
+  "skills": []
+}
