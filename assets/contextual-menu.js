@@ -186,9 +186,40 @@
     return sections;
   }
 
+  function structurePageHeader(header) {
+    var main = header.querySelector('.page-header-main');
+    if (!main) {
+      main = document.createElement('div');
+      main.className = 'page-header-main';
+      var nodes = Array.prototype.slice.call(header.childNodes);
+      nodes.forEach(function (n) { main.appendChild(n); });
+      header.appendChild(main);
+    }
+
+    var h1 = main.querySelector('h1');
+    if (!h1) return null;
+
+    var row = main.querySelector('.page-title-row');
+    if (!row) {
+      row = document.createElement('div');
+      row.className = 'page-title-row';
+      main.insertBefore(row, h1);
+      row.appendChild(h1);
+    } else if (h1.parentNode !== row) {
+      row.appendChild(h1);
+    }
+
+    var existingWrap = header.querySelector('.gp-contextual-wrap');
+    if (existingWrap && existingWrap.parentNode !== row) {
+      row.appendChild(existingWrap);
+    }
+
+    return { header: header, titleRow: row, main: main };
+  }
+
   function ensurePageHeader() {
     var header = document.querySelector('.page-header');
-    if (header) return header;
+    if (header) return structurePageHeader(header);
 
     var content = document.querySelector('.main-content .content') || document.querySelector('.content');
     if (!content) return null;
@@ -200,36 +231,32 @@
 
     var desc = content.querySelector('.page-description');
     var h1 = content.querySelector('h1');
-    if (desc) {
-      main.appendChild(desc);
-    }
+    if (desc) main.appendChild(desc);
+
+    var row = document.createElement('div');
+    row.className = 'page-title-row';
+    main.appendChild(row);
+
     if (h1) {
-      main.appendChild(h1);
-    }
-    if (!desc && !h1) {
+      row.appendChild(h1);
+    } else {
       var title = document.title.replace(/\s*[|—–-]\s*[^|—–-]+$/, '').trim();
       var fallback = document.createElement('h1');
       fallback.textContent = title;
-      main.appendChild(fallback);
+      row.appendChild(fallback);
     }
 
     header.appendChild(main);
     content.parentNode.insertBefore(header, content);
-    return header;
+    return { header: header, titleRow: row, main: main };
   }
 
   function mount() {
-    var header = ensurePageHeader();
-    if (!header || header.querySelector('.gp-contextual-wrap')) return;
+    var result = ensurePageHeader();
+    if (!result || !result.titleRow) return;
 
-    var main = header.querySelector('.page-header-main');
-    if (!main) {
-      var nodes = Array.prototype.slice.call(header.childNodes);
-      main = document.createElement('div');
-      main.className = 'page-header-main';
-      nodes.forEach(function (n) { main.appendChild(n); });
-      header.appendChild(main);
-    }
+    var titleRow = result.titleRow;
+    if (titleRow.querySelector('.gp-contextual-wrap')) return;
 
     var wrap = document.createElement('div');
     wrap.className = 'gp-contextual-wrap';
@@ -259,7 +286,7 @@
 
     wrap.appendChild(trigger);
     wrap.appendChild(menu);
-    header.appendChild(wrap);
+    titleRow.appendChild(wrap);
   }
 
   if (document.readyState === 'loading') {

@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const ASSET_VERSION = '20260524-001';
+const ASSET_VERSION = '20260524-002';
 
 const HEAD_MARKERS = {
   alternate: '<!-- gp-docs:alternate -->',
@@ -103,16 +103,11 @@ export function patchStylesheet(repoRoot, site) {
   css += `
 
 ${marker}
-.page-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-}
 .page-header-main {
-    flex: 1;
     min-width: 0;
+}
+.page-header .page-title-row + .page-description {
+    margin-top: 0;
 }
 `;
   fs.writeFileSync(cssPath, css);

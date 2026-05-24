@@ -1,8 +1,26 @@
 /* Mintlify-style contextual menu for GP docs */
+.page-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.page-title-row h1 {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+}
+
+.page-header-main > .page-description {
+  margin-top: 0;
+}
+
 .gp-contextual-wrap {
   position: relative;
   flex-shrink: 0;
-  align-self: flex-start;
+  align-self: center;
 }
 
 .gp-contextual-trigger {
@@ -153,6 +171,15 @@
 }
 
 @media (max-width: 640px) {
+  .page-title-row {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .gp-contextual-wrap {
+    margin-left: auto;
+  }
+
   .gp-contextual-menu {
     right: 0;
     left: auto;
