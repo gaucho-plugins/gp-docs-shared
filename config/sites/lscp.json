@@ -1,0 +1,11 @@
+{
+  "id": "lscp",
+  "hostname": "docs.customerportalplugin.com",
+  "origin": "https://docs.customerportalplugin.com",
+  "title": "Login for Stripe Customer Portal Docs",
+  "productName": "Login for Stripe Customer Portal",
+  "mcpName": "login-stripe-customer-portal-docs",
+  "template": "assets",
+  "assetPath": "assets",
+  "skills": []
+}
