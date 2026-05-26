@@ -7,5 +7,41 @@
   "mcpName": "speed-in-china-docs",
   "template": "assets",
   "assetPath": "assets",
-  "skills": []
+  "skills": [],
+  "header": {
+    "logoIcon": "favicon.png",
+    "logoAlt": "Speed in China",
+    "logoText": "Speed in China Docs",
+    "links": [
+      { "href": "https://speedinchinaplugin.com/", "label": "Main Site", "hideMobile": true },
+      { "href": "https://speedinchinaplugin.com/pricing/", "label": "Pricing", "className": "header-buy" },
+      { "href": "https://wordpress.org/plugins/speed-in-china/", "label": "Download Free", "className": "header-download-btn" },
+      { "href": "https://gauchoplugins.com/support/", "label": "Support", "newTab": true }
+    ]
+  },
+  "nav": [
+    { "title": "Getting Started", "items": [
+      { "label": "Welcome", "href": "" },
+      { "label": "Installation", "href": "getting-started/installation/" },
+      { "label": "Requirements", "href": "getting-started/requirements/" }
+    ]},
+    { "title": "Features", "items": [
+      { "label": "Speed Testing", "href": "features/speed-testing/" },
+      { "label": "Google Font Localization", "href": "features/google-font-localization/" },
+      { "label": "Resource Analysis", "href": "features/resource-analysis/" },
+      { "label": "Optimization Suggestions", "href": "features/optimization-suggestions/" },
+      { "label": "Test History", "href": "features/test-history/" },
+      { "label": "Scheduled Testing", "href": "features/scheduled-testing/" }
+    ]},
+    { "title": "Support", "items": [
+      { "label": "FAQs", "href": "support/faqs/" },
+      { "label": "Troubleshooting", "href": "support/troubleshooting/" }
+    ]}
+  ],
+  "sidebarCta": {
+    "label": "Get Speed in China",
+    "primary": { "label": "Download Free", "href": "https://wordpress.org/plugins/speed-in-china/" },
+    "secondary": { "label": "Support", "href": "https://gauchoplugins.com/support/", "newTab": true },
+    "tertiary": { "label": "Main Site", "href": "https://speedinchinaplugin.com/" }
+  }
 }

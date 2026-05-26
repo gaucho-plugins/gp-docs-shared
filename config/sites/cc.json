@@ -7,5 +7,47 @@
   "mcpName": "cognitive-cart-docs",
   "template": "assets",
   "assetPath": "assets",
-  "skills": []
+  "skills": [],
+  "header": {
+    "logoIcon": "icon.png",
+    "logoAlt": "CognitiveCart",
+    "logoText": "CognitiveCart Documentation",
+    "links": [
+      { "href": "https://cognitivecartplugin.com/", "label": "Main Site", "hideMobile": true },
+      { "href": "https://cognitivecartplugin.com/pricing", "label": "Pricing", "className": "header-buy" },
+      { "href": "https://gauchoplugins.com/support", "label": "Support", "newTab": true }
+    ]
+  },
+  "nav": [
+    { "title": "Getting Started", "items": [
+      { "label": "Welcome", "href": "" },
+      { "label": "Quick Start", "href": "getting-started/quick-start/" },
+      { "label": "How It Works", "href": "getting-started/how-it-works/" }
+    ]},
+    { "title": "Features", "items": [
+      { "label": "UCP Manifest", "href": "features/ucp-manifest/" },
+      { "label": "Abilities API", "href": "features/abilities-api/" },
+      { "label": "GEO Suite & Discovery", "href": "features/geo-suite-discovery/" },
+      { "label": "Pulse Concierge", "href": "features/pulse-concierge/" },
+      { "label": "Stripe Connect & Checkout", "href": "features/stripe-connect-checkout/" },
+      { "label": "Intelligence Dashboard", "href": "features/intelligence-dashboard/" },
+      { "label": "Kill-Switch", "href": "features/kill-switch/" }
+    ]},
+    { "title": "Developers", "items": [
+      { "label": "MCP Server", "href": "mcp/" }
+    ]},
+    { "title": "FAQs", "items": [
+      { "label": "FAQs", "href": "faqs/" }
+    ]},
+    { "title": "Support", "items": [
+      { "label": "Troubleshooting", "href": "support/troubleshooting/" },
+      { "label": "Changelog", "href": "support/changelog/" }
+    ]}
+  ],
+  "sidebarCta": {
+    "label": "Get CognitiveCart",
+    "primary": { "label": "Get CognitiveCart", "href": "https://cognitivecartplugin.com/pricing" },
+    "secondary": { "label": "Support", "href": "https://gauchoplugins.com/support/", "newTab": true },
+    "tertiary": { "label": "Main Site", "href": "https://cognitivecartplugin.com/" }
+  }
 }

@@ -7,5 +7,52 @@
   "mcpName": "login-stripe-customer-portal-docs",
   "template": "assets",
   "assetPath": "assets",
-  "skills": []
+  "skills": [],
+  "header": {
+    "logoIcon": "favicon.png",
+    "logoAlt": "Login for Stripe Customer Portal",
+    "logoText": "Login for Stripe Customer Portal Docs",
+    "links": [
+      { "href": "https://customerportalplugin.com/pricing/", "label": "Pricing", "className": "header-buy" },
+      { "href": "https://wordpress.org/plugins/login-stripe-customer-portal/", "label": "Download Free", "className": "header-download-btn" },
+      { "href": "https://gauchoplugins.com/support/", "label": "Support", "newTab": true }
+    ]
+  },
+  "nav": [
+    { "title": "Getting Started", "items": [
+      { "label": "Welcome", "href": "" },
+      { "label": "Installation", "href": "getting-started/installation/" },
+      { "label": "Stripe Prerequisites", "href": "getting-started/stripe-prerequisites/" },
+      { "label": "Quick Setup", "href": "getting-started/quick-setup/" }
+    ]},
+    { "title": "Configuration", "items": [
+      { "label": "Settings Reference", "href": "configuration/settings-reference/" }
+    ]},
+    { "title": "Usage", "items": [
+      { "label": "Customer Portal Endpoint", "href": "usage/customer-portal-endpoint/" },
+      { "label": "Shortcode", "href": "usage/shortcode/" },
+      { "label": "Login Flow", "href": "usage/login-flow/" }
+    ]},
+    { "title": "Customization", "items": [
+      { "label": "Custom CSS", "href": "customization/custom-css/" }
+    ]},
+    { "title": "FAQs", "items": [
+      { "label": "FAQs", "href": "faqs/faqs/" }
+    ]},
+    { "title": "Troubleshooting", "items": [
+      { "label": "Troubleshooting", "href": "troubleshooting/troubleshooting/" }
+    ]},
+    { "title": "Security & Privacy", "items": [
+      { "label": "Security & Privacy", "href": "security-and-privacy/security-and-privacy/" }
+    ]},
+    { "title": "Changelog", "items": [
+      { "label": "Changelog", "href": "changelog/changelog/" }
+    ]}
+  ],
+  "sidebarCta": {
+    "label": "Get Login for Stripe Customer Portal",
+    "primary": { "label": "Download Free", "href": "https://wordpress.org/plugins/login-stripe-customer-portal/" },
+    "secondary": { "label": "Support", "href": "https://gauchoplugins.com/support/", "newTab": true },
+    "tertiary": { "label": "WordPress.org", "href": "https://wordpress.org/plugins/login-stripe-customer-portal/" }
+  }
 }

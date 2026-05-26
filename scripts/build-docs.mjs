@@ -11,8 +11,12 @@ import {
   markdownPathForHtml,
 } from './lib/docs-utils.mjs';
 import {
+  injectHeader,
   injectPage,
+  injectSidebar,
   patchStylesheet,
+  stripComponentsJsReference,
+  stripFreemiusCheckout,
   syncSharedAssets,
   writeHtaccess,
 } from './lib/inject-html.mjs';
@@ -132,7 +136,16 @@ async function main() {
     const meta = extractPageMeta(html);
     const urlPath = pageUrlPath(repoRoot, htmlPath, site);
     const assetPrefix = assetPrefixForHtml(path.relative(repoRoot, htmlPath), site.assetPath);
-    const patched = injectPage(html, { site, assetPrefix, pagePath: urlPath });
+    // Root prefix navigates from the page back to repo root for nav/logo hrefs.
+    // assetPrefix already includes the assets subdir; rootPrefix strips it.
+    const rootPrefix = site.assetPath
+      ? assetPrefix.replace(new RegExp(`${site.assetPath}/$`), '')
+      : assetPrefix;
+    let patched = injectPage(html, { site, assetPrefix, pagePath: urlPath });
+    patched = injectHeader(patched, { site, assetPrefix, rootPrefix });
+    patched = injectSidebar(patched, { site, rootPrefix, pagePath: urlPath });
+    patched = stripFreemiusCheckout(patched);
+    patched = stripComponentsJsReference(patched);
     fs.writeFileSync(htmlPath, patched);
 
     builtPages.push({

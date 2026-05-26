@@ -7,5 +7,71 @@
   "mcpName": "version-info-docs",
   "template": "root",
   "assetPath": "",
-  "skills": []
+  "skills": [],
+  "navStyle": "absolute",
+  "header": {
+    "logoIcon": null,
+    "logoSvg": "<svg viewBox=\"0 0 24 24\"><path d=\"M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\"/></svg>",
+    "logoAlt": "Version Info",
+    "logoText": "Version Info Docs",
+    "links": [
+      { "href": "https://versioninfoplugin.com/", "label": "Main Site", "hideMobile": true },
+      { "href": "https://versioninfoplugin.com/pricing", "label": "Pricing", "className": "header-buy" },
+      { "href": "https://wordpress.org/plugins/version-info/", "label": "Download Free", "newTab": true },
+      { "href": "https://gauchoplugins.com/support", "label": "Get Support", "newTab": true }
+    ]
+  },
+  "nav": [
+    { "title": "Getting Started", "items": [
+      { "label": "Welcome", "href": "" },
+      { "label": "Installation & Setup", "href": "getting-started-installation-and-setup/" },
+      { "label": "Troubleshooting", "href": "getting-started-troubleshooting/" }
+    ]},
+    { "title": "Display Locations", "items": [
+      { "label": "Admin Footer", "href": "display-locations-admin-footer/" },
+      { "label": "Admin Bar", "href": "display-locations-admin-bar/" },
+      { "label": "Dashboard Widget", "href": "display-locations-dashboard-widget/" }
+    ]},
+    { "title": "PRO Features", "items": [
+      { "label": "PRO Features Overview", "href": "pro-features/" },
+      { "label": "System Resources", "href": "pro-features-system-resources/", "children": [
+        { "label": "CPU Monitoring", "href": "pro-features-system-resources-cpu-monitoring/" },
+        { "label": "Memory Monitoring", "href": "pro-features-system-resources-memory-monitoring/" },
+        { "label": "Database Size Tracking", "href": "pro-features-system-resources-database-size-tracking/" }
+      ]},
+      { "label": "Environment Indicators", "href": "pro-features-environment-indicators/" },
+      { "label": "Server Location", "href": "pro-features-server-location/" },
+      { "label": "Version History Audit Log", "href": "pro-features-version-history/" },
+      { "label": "Health Advisor", "href": "pro-features-health-advisor/" },
+      { "label": "System Info Export", "href": "pro-features-system-export/" }
+    ]},
+    { "title": "Agency Features", "items": [
+      { "label": "Agency Features Overview", "href": "agency-features/" },
+      { "label": "White Labeling", "href": "agency-features-white-labeling/" },
+      { "label": "Role-Based Visibility", "href": "agency-features-role-based-visibility/" },
+      { "label": "Email Alerts", "href": "agency-features-email-alerts/" },
+      { "label": "Error Log Viewer", "href": "agency-features-error-log-viewer/" },
+      { "label": "Multisite Network Dashboard", "href": "agency-features-multisite-network-dashboard/" }
+    ]},
+    { "title": "FAQs", "items": [
+      { "label": "Is the plugin lightweight?", "href": "faqs-is-the-plugin-lightweight/" },
+      { "label": "Does it work on Multisite?", "href": "faqs-does-it-work-on-multisite/" },
+      { "label": "Which environments are detected?", "href": "faqs-which-environments-are-detected/" },
+      { "label": "What's the difference between plans?", "href": "faqs-whats-the-difference-between-plans/" }
+    ]},
+    { "title": "Advanced", "items": [
+      { "label": "Hooks & Filters", "href": "advanced-configuration-hooks-and-filters/" },
+      { "label": "PHP Versions Supported", "href": "advanced-configuration-php-versions-supported/" },
+      { "label": "Known Plugin Conflicts", "href": "advanced-configuration-known-plugin-conflicts/" }
+    ]},
+    { "title": "Changelog", "items": [
+      { "label": "Changelog", "href": "changelog-changelog/" }
+    ]}
+  ],
+  "sidebarCta": {
+    "label": "Get Version Info",
+    "primary": { "label": "Download Free", "href": "https://wordpress.org/plugins/version-info/" },
+    "secondary": { "label": "Support", "href": "https://gauchoplugins.com/support/", "newTab": true },
+    "tertiary": { "label": "Main Site", "href": "https://versioninfoplugin.com/" }
+  }
 }

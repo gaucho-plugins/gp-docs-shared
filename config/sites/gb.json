@@ -7,5 +7,48 @@
   "mcpName": "gyta-buyback-docs",
   "template": "assets",
   "assetPath": "assets",
-  "skills": []
+  "skills": [],
+  "header": {
+    "logoIcon": "images/cropped-Gyta-Buyback-Logo.png",
+    "logoAlt": "Gyta Buyback",
+    "logoText": "Gyta Buyback Docs",
+    "links": [
+      { "href": "https://gytabuyback.com/", "label": "Main Site", "hideMobile": true },
+      { "href": "https://gytabuyback.com/#pricing", "label": "Pricing", "className": "header-buy" },
+      { "href": "https://wordpress.org/plugins/gyta-buyback/", "label": "Download Free", "className": "header-download-btn" },
+      { "href": "https://gauchoplugins.com/support", "label": "Support", "newTab": true }
+    ]
+  },
+  "nav": [
+    { "title": "Getting Started", "items": [
+      { "label": "Welcome", "href": "" },
+      { "label": "Installation", "href": "getting-started/installation/" },
+      { "label": "EasyPost Setup", "href": "getting-started/easypost-setup/" }
+    ]},
+    { "title": "Configuration", "items": [
+      { "label": "Plugin Settings", "href": "configuration/plugin-settings/" },
+      { "label": "WooCommerce Tips", "href": "configuration/recommended-woo-settings/" }
+    ]},
+    { "title": "Features", "items": [
+      { "label": "Product Categories", "href": "features/product-categories/" },
+      { "label": "Product Attributes", "href": "features/product-attributes/" },
+      { "label": "Product Setup", "href": "features/product-setup/" },
+      { "label": "Order Management", "href": "features/order-management/" },
+      { "label": "EasyPost Shipping", "href": "features/easypost-shipping/" },
+      { "label": "Batch Labels", "href": "features/batch-labels/" },
+      { "label": "Webhooks", "href": "features/webhooks/" }
+    ]},
+    { "title": "Support", "items": [
+      { "label": "FAQs", "href": "support/faqs/" },
+      { "label": "Testing", "href": "support/testing/" },
+      { "label": "Troubleshooting", "href": "support/troubleshooting/" },
+      { "label": "Updates", "href": "support/updates/" }
+    ]}
+  ],
+  "sidebarCta": {
+    "label": "Get Gyta Buyback",
+    "primary": { "label": "Download Free", "href": "https://wordpress.org/plugins/gyta-buyback/" },
+    "secondary": { "label": "Support", "href": "https://gauchoplugins.com/support/", "newTab": true },
+    "tertiary": { "label": "Main Site", "href": "https://gytabuyback.com/" }
+  }
 }

@@ -7,5 +7,46 @@
   "mcpName": "blocked-in-china-docs",
   "template": "assets",
   "assetPath": "assets",
-  "skills": []
+  "skills": [],
+  "header": {
+    "logoIcon": "favicon.png",
+    "logoAlt": "Blocked in China",
+    "logoText": "Blocked in China Docs",
+    "links": [
+      { "href": "https://blockedinchinaplugin.com/", "label": "Main Site", "hideMobile": true },
+      { "href": "https://blockedinchinaplugin.com/pricing/", "label": "Pricing", "className": "header-buy" },
+      { "href": "https://wordpress.org/plugins/blocked-in-china/", "label": "Download Free", "className": "header-download-btn" },
+      { "href": "https://gauchoplugins.com/support/", "label": "Support", "newTab": true }
+    ]
+  },
+  "nav": [
+    { "title": "Getting Started", "items": [
+      { "label": "Welcome", "href": "" }
+    ]},
+    { "title": "Status", "items": [
+      { "label": "Running Your First Status Check", "href": "status/running-your-first-status-check/" },
+      { "label": "How Status Checks Work", "href": "status/how-status-checks-work/" }
+    ]},
+    { "title": "Schedule", "items": [
+      { "label": "Scheduling Status Checks", "href": "schedule/scheduling-status-checks/" }
+    ]},
+    { "title": "Log", "items": [
+      { "label": "Logging Status Checks", "href": "log/logging-status-checks/" }
+    ]},
+    { "title": "Troubleshooting", "items": [
+      { "label": "Troubleshooting Guide", "href": "troubleshooting/troubleshooting-guide/" }
+    ]},
+    { "title": "Privacy & Data", "items": [
+      { "label": "Data Handling (GDPR/CCPA)", "href": "privacy-and-data/data-handling-gdpr-ccpa/" }
+    ]},
+    { "title": "Changelog", "items": [
+      { "label": "Changelog", "href": "changelog/changelog/" }
+    ]}
+  ],
+  "sidebarCta": {
+    "label": "Get Blocked in China",
+    "primary": { "label": "Download Free", "href": "https://wordpress.org/plugins/blocked-in-china/" },
+    "secondary": { "label": "Support", "href": "https://gauchoplugins.com/support/", "newTab": true },
+    "tertiary": { "label": "Main Site", "href": "https://blockedinchinaplugin.com/" }
+  }
 }

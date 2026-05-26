@@ -15,5 +15,87 @@
       "title": "Split Pay Setup Skill",
       "path": "assets/skill/split-pay-setup/SKILL.md"
     }
-  ]
+  ],
+  "header": {
+    "logoIconRoot": "images/logo-icon.jpg",
+    "logoAlt": "Split Pay Plugin",
+    "logoText": "Split Pay Plugin Documentation",
+    "links": [
+      { "href": "https://splitpayplugin.com/", "label": "Main Site", "hideMobile": true },
+      { "href": "https://splitpayplugin.com/pricing/", "label": "Pricing", "className": "header-buy" },
+      { "href": "https://wordpress.org/plugins/bsd-woo-stripe-connect-split-pay/", "label": "Download Free", "className": "header-download-btn" },
+      { "href": "https://gauchoplugins.com/support/", "label": "Support", "newTab": true }
+    ]
+  },
+  "nav": [
+    { "title": "Getting Started", "items": [
+      { "label": "Welcome", "href": "" },
+      { "label": "Quick Start", "href": "getting-started/quick-start/" },
+      { "label": "Stripe Connect Prerequisites", "href": "getting-started/stripe-connect-prerequisites/" },
+      { "label": "How Stripe Transfers Work", "href": "getting-started/how-stripe-transfers-work/" },
+      { "label": "Integrations Tab", "href": "getting-started/integrations-tab/" },
+      { "label": "Activating PRO", "href": "getting-started/activating-pro/" },
+      { "label": "AI Assistant Skill", "href": "getting-started/ai-assistant/" }
+    ]},
+    { "title": "Transfers", "items": [
+      { "label": "How to Transfer Payments", "href": "features/how-to-transfer-payments/", "children": [
+        { "label": "Global Transfers", "href": "features/how-to-transfer-payments/global-transfers/" },
+        { "label": "Product-level Transfers", "href": "features/how-to-transfer-payments/product-level-transfers/" },
+        { "label": "Variable Product Transfers", "href": "features/how-to-transfer-payments/variable-product-transfers/" },
+        { "label": "Delay Transfers", "href": "features/how-to-transfer-payments/delay-transfers/" }
+      ]},
+      { "label": "How to Transfer Shipping Fees", "href": "features/how-to-transfer-shipping-fees/", "children": [
+        { "label": "Global Shipping Transfers", "href": "features/how-to-transfer-shipping-fees/global-shipping-transfers/" },
+        { "label": "Product-level Shipping Transfers", "href": "features/how-to-transfer-shipping-fees/product-level-shipping-transfers/" }
+      ]}
+    ]},
+    { "title": "Configuration", "items": [
+      { "label": "Connecting Vendor Stripe Accounts", "href": "features/connecting-vendor-stripe-accounts/" },
+      { "label": "Coupon Handling", "href": "features/coupon-handling/" },
+      { "label": "Tax Handling", "href": "features/tax-handling/" },
+      { "label": "Refund Handling", "href": "features/refund-handling/" },
+      { "label": "Retry Failed Transfers", "href": "features/retry-failed-transfers/" },
+      { "label": "Stripe Metadata", "href": "features/stripe-metadata/" },
+      { "label": "Transfer Confirmation Email", "href": "features/transfer-confirmation-email/" },
+      { "label": "Bulk Editor", "href": "features/bulk-editor/" }
+    ]},
+    { "title": "Tools", "items": [
+      { "label": "Viewing Transfers", "href": "features/viewing-transfers/" },
+      { "label": "Supported Payment Methods", "href": "features/supported-payment-methods/" },
+      { "label": "Developer Filters", "href": "features/developer-filters/" }
+    ]},
+    { "title": "Integrations & Compatibility", "items": [
+      { "label": "Overview", "href": "features/integrations-and-compatibility/", "children": [
+        { "label": "FluentCart", "href": "features/integrations-and-compatibility/fluentcart/" },
+        { "label": "Payment Plugins for Stripe", "href": "features/integrations-and-compatibility/payment-plugins-for-stripe-woocommerce/" },
+        { "label": "WooCommerce Subscriptions", "href": "features/integrations-and-compatibility/woocommerce-subscriptions/" },
+        { "label": "Advanced Product Fields", "href": "features/integrations-and-compatibility/advanced-product-fields/" },
+        { "label": "Product Add-Ons Ultimate", "href": "features/integrations-and-compatibility/product-add-ons-ultimate/" },
+        { "label": "Product Bundles for WooCommerce", "href": "features/integrations-and-compatibility/product-bundles-for-woocommerce/" },
+        { "label": "Name Your Price", "href": "features/integrations-and-compatibility/name-your-price-and-customer-chosen-price/" },
+        { "label": "Custom Integrations", "href": "features/integrations-and-compatibility/custom-integrations/" }
+      ]}
+    ]},
+    { "title": "FAQs", "items": [
+      { "label": "Testing", "href": "faqs/testing/" },
+      { "label": "Uninstall & License", "href": "faqs/uninstall-and-license/" },
+      { "label": "Reset to Defaults", "href": "faqs/reset-to-defaults/" },
+      { "label": "International Transfers", "href": "faqs/international-transfers/" },
+      { "label": "Examples", "href": "faqs/examples/" },
+      { "label": "Transfer Reversals & Refunds", "href": "faqs/transfer-reversals-refunds/" }
+    ]},
+    { "title": "Support", "items": [
+      { "label": "Troubleshooting", "href": "support/troubleshooting/" },
+      { "label": "Common Errors", "href": "support/common-errors/" },
+      { "label": "Recovering Lost Product Settings", "href": "support/recovering-lost-product-settings/" },
+      { "label": "Adding Gaucho Plugins to your Stripe Team", "href": "support/adding-gaucho-plugins-to-your-stripe-team/" },
+      { "label": "Changelog", "href": "support/changelog/" }
+    ]}
+  ],
+  "sidebarCta": {
+    "label": "Get Split Pay",
+    "primary": { "label": "Download Free", "href": "https://wordpress.org/plugins/bsd-woo-stripe-connect-split-pay/" },
+    "secondary": { "label": "Support", "href": "https://gauchoplugins.com/support/", "newTab": true },
+    "tertiary": { "label": "Main Site", "href": "https://splitpayplugin.com/" }
+  }
 }
