@@ -36,6 +36,9 @@
     { "title": "Support", "items": [
       { "label": "FAQs", "href": "support/faqs/" },
       { "label": "Troubleshooting", "href": "support/troubleshooting/" }
+    ]},
+    { "title": "Changelog", "items": [
+      { "label": "Changelog", "href": "changelog/changelog/" }
     ]}
   ],
   "sidebarCta": {
