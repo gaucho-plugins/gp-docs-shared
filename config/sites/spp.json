@@ -66,6 +66,7 @@
     ]},
     { "title": "Integrations & Compatibility", "items": [
       { "label": "Overview", "href": "features/integrations-and-compatibility/", "children": [
+        { "label": "WCFM Marketplace", "href": "features/integrations-and-compatibility/wcfm-marketplace/" },
         { "label": "FluentCart", "href": "features/integrations-and-compatibility/fluentcart/" },
         { "label": "Payment Plugins for Stripe", "href": "features/integrations-and-compatibility/payment-plugins-for-stripe-woocommerce/" },
         { "label": "WooCommerce Subscriptions", "href": "features/integrations-and-compatibility/woocommerce-subscriptions/" },
