@@ -37,6 +37,16 @@
       { "label": "Activating PRO", "href": "getting-started/activating-pro/" },
       { "label": "AI Assistant Skill", "href": "getting-started/ai-assistant/" }
     ]},
+    { "title": "Vendors", "items": [
+      { "label": "Connecting Vendor Stripe Accounts", "href": "features/connecting-vendor-stripe-accounts/" },
+      { "label": "Vendor Automation", "href": "features/vendor-automation/", "children": [
+        { "label": "Automatic Vendor Products", "href": "features/vendor-automation/automatic-vendor-products/" },
+        { "label": "Vendor Payment QR Codes", "href": "features/vendor-automation/vendor-payment-qr-codes/" },
+        { "label": "Transaction Emails", "href": "features/vendor-automation/transaction-emails/" },
+        { "label": "Custom Order-Received Message", "href": "features/vendor-automation/custom-order-received-message/" },
+        { "label": "Accept Any-Amount Payments with QR Codes", "href": "features/vendor-automation/accept-any-amount-payments-with-qr-codes/" }
+      ]}
+    ]},
     { "title": "Transfers", "items": [
       { "label": "How to Transfer Payments", "href": "features/how-to-transfer-payments/", "children": [
         { "label": "Global Transfers", "href": "features/how-to-transfer-payments/global-transfers/" },
@@ -50,26 +60,13 @@
       ]}
     ]},
     { "title": "Configuration", "items": [
-      { "label": "Connecting Vendor Stripe Accounts", "href": "features/connecting-vendor-stripe-accounts/" },
       { "label": "Coupon Handling", "href": "features/coupon-handling/" },
       { "label": "Tax Handling", "href": "features/tax-handling/" },
       { "label": "Refund Handling", "href": "features/refund-handling/" },
       { "label": "Retry Failed Transfers", "href": "features/retry-failed-transfers/" },
+      { "label": "Transfer Confirmation Email (Admin)", "href": "features/transfer-confirmation-email/" },
       { "label": "Stripe Metadata", "href": "features/stripe-metadata/" },
-      { "label": "Transfer Confirmation Email", "href": "features/transfer-confirmation-email/" },
-      { "label": "Bulk Editor", "href": "features/bulk-editor/" },
-      { "label": "Vendor Automation", "href": "features/vendor-automation/", "children": [
-        { "label": "Automatic Vendor Products", "href": "features/vendor-automation/automatic-vendor-products/" },
-        { "label": "Vendor Payment QR Codes", "href": "features/vendor-automation/vendor-payment-qr-codes/" },
-        { "label": "Transaction Emails", "href": "features/vendor-automation/transaction-emails/" },
-        { "label": "Custom Order-Received Message", "href": "features/vendor-automation/custom-order-received-message/" },
-        { "label": "Accept Any-Amount Payments with QR Codes", "href": "features/vendor-automation/accept-any-amount-payments-with-qr-codes/" }
-      ]}
-    ]},
-    { "title": "Tools", "items": [
-      { "label": "Viewing Transfers", "href": "features/viewing-transfers/" },
-      { "label": "Supported Payment Methods", "href": "features/supported-payment-methods/" },
-      { "label": "Developer Filters", "href": "features/developer-filters/" }
+      { "label": "Bulk Editor", "href": "features/bulk-editor/" }
     ]},
     { "title": "Integrations & Compatibility", "items": [
       { "label": "Overview", "href": "features/integrations-and-compatibility/", "children": [
@@ -85,13 +82,17 @@
         { "label": "Custom Integrations", "href": "features/integrations-and-compatibility/custom-integrations/" }
       ]}
     ]},
+    { "title": "Tools & Reference", "items": [
+      { "label": "Viewing Transfers", "href": "features/viewing-transfers/" },
+      { "label": "Supported Payment Methods", "href": "features/supported-payment-methods/" },
+      { "label": "Developer Filters", "href": "features/developer-filters/" }
+    ]},
     { "title": "FAQs", "items": [
       { "label": "Testing", "href": "faqs/testing/" },
       { "label": "Uninstall & License", "href": "faqs/uninstall-and-license/" },
       { "label": "Reset to Defaults", "href": "faqs/reset-to-defaults/" },
       { "label": "International Transfers", "href": "faqs/international-transfers/" },
-      { "label": "Examples", "href": "faqs/examples/" },
-      { "label": "Transfer Reversals & Refunds", "href": "faqs/transfer-reversals-refunds/" }
+      { "label": "Examples", "href": "faqs/examples/" }
     ]},
     { "title": "Support", "items": [
       { "label": "Troubleshooting", "href": "support/troubleshooting/" },
