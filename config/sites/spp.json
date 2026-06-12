@@ -56,8 +56,7 @@
         { "label": "Vendor Payment QR Codes", "href": "features/vendor-automation/vendor-payment-qr-codes/" },
         { "label": "Transaction Emails", "href": "features/vendor-automation/transaction-emails/" },
         { "label": "Custom Order-Received Message", "href": "features/vendor-automation/custom-order-received-message/" },
-        { "label": "Accept Any-Amount Payments with QR Codes", "href": "features/vendor-automation/accept-any-amount-payments-with-qr-codes/" },
-        { "label": "Developer Hooks", "href": "features/vendor-automation/developer-hooks/" }
+        { "label": "Accept Any-Amount Payments with QR Codes", "href": "features/vendor-automation/accept-any-amount-payments-with-qr-codes/" }
       ]},
       { "label": "Coupon Handling", "href": "features/coupon-handling/" },
       { "label": "Tax Handling", "href": "features/tax-handling/" },
