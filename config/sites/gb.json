@@ -30,6 +30,7 @@
       { "label": "WooCommerce Tips", "href": "configuration/recommended-woo-settings/" }
     ]},
     { "title": "Features", "items": [
+      { "label": "Store Modes", "href": "features/store-modes/" },
       { "label": "Product Categories", "href": "features/product-categories/" },
       { "label": "Product Attributes", "href": "features/product-attributes/" },
       { "label": "Product Setup", "href": "features/product-setup/" },
@@ -42,7 +43,8 @@
       { "label": "FAQs", "href": "support/faqs/" },
       { "label": "Testing", "href": "support/testing/" },
       { "label": "Troubleshooting", "href": "support/troubleshooting/" },
-      { "label": "Updates", "href": "support/updates/" }
+      { "label": "Updates", "href": "support/updates/" },
+      { "label": "Changelog", "href": "support/changelog/" }
     ]}
   ],
   "sidebarCta": {
