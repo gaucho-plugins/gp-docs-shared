@@ -51,14 +51,7 @@
       { "label": "FAQs", "href": "support/faqs/" },
       { "label": "Testing", "href": "support/testing/" },
       { "label": "Troubleshooting", "href": "support/troubleshooting/" },
-      { "label": "Updates", "href": "support/updates/" },
       { "label": "Changelog", "href": "support/changelog/" }
     ]}
-  ],
-  "sidebarCta": {
-    "label": "Get Gyta Buyback",
-    "primary": { "label": "Download Free", "href": "https://wordpress.org/plugins/gyta-buyback/" },
-    "secondary": { "label": "Support", "href": "https://gauchoplugins.com/support/", "newTab": true },
-    "tertiary": { "label": "Main Site", "href": "https://gytabuyback.com/" }
-  }
+  ]
 }
