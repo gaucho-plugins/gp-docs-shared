@@ -25,10 +25,6 @@
       { "label": "Installation", "href": "getting-started/installation/" },
       { "label": "EasyPost Setup", "href": "getting-started/easypost-setup/" }
     ]},
-    { "title": "Configuration", "items": [
-      { "label": "Plugin Settings", "href": "configuration/plugin-settings/" },
-      { "label": "WooCommerce Tips", "href": "configuration/recommended-woo-settings/" }
-    ]},
     { "title": "Store Modes", "items": [
       { "label": "Overview", "href": "features/store-modes/" },
       { "label": "Buyback Only", "href": "features/store-modes/buyback/" },
@@ -36,14 +32,20 @@
       { "label": "Net Settlement", "href": "features/store-modes/net/" },
       { "label": "Trade-In Catalog", "href": "features/store-modes/trade-in-catalog/" }
     ]},
-    { "title": "Features", "items": [
+    { "title": "Products & Catalog", "items": [
       { "label": "Product Categories", "href": "features/product-categories/" },
       { "label": "Product Attributes", "href": "features/product-attributes/" },
-      { "label": "Product Setup", "href": "features/product-setup/" },
+      { "label": "Create Products", "href": "features/product-setup/" }
+    ]},
+    { "title": "Orders & Shipping", "items": [
       { "label": "Order Management", "href": "features/order-management/" },
       { "label": "EasyPost Shipping", "href": "features/easypost-shipping/" },
       { "label": "Batch Labels", "href": "features/batch-labels/" },
       { "label": "Webhooks", "href": "features/webhooks/" }
+    ]},
+    { "title": "Configuration", "items": [
+      { "label": "Plugin Settings", "href": "configuration/plugin-settings/" },
+      { "label": "WooCommerce Tips", "href": "configuration/recommended-woo-settings/" }
     ]},
     { "title": "Support", "items": [
       { "label": "FAQs", "href": "support/faqs/" },
