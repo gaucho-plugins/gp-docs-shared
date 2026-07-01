@@ -16,7 +16,7 @@
       { "href": "https://gytabuyback.com/", "label": "Main Site", "hideMobile": true },
       { "href": "https://gytabuyback.com/#pricing", "label": "Pricing", "className": "header-buy" },
       { "href": "https://wordpress.org/plugins/gyta-buyback/", "label": "Download Free", "className": "header-download-btn" },
-      { "href": "https://gauchoplugins.com/support", "label": "Support", "newTab": true }
+      { "href": "https://gytabuyback.com/support/", "label": "Support", "newTab": true }
     ]
   },
   "nav": [
