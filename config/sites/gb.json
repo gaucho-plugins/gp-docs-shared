@@ -22,8 +22,7 @@
   "nav": [
     { "title": "Getting Started", "items": [
       { "label": "Welcome", "href": "" },
-      { "label": "Installation", "href": "getting-started/installation/" },
-      { "label": "EasyPost Setup", "href": "getting-started/easypost-setup/" }
+      { "label": "Installation", "href": "getting-started/installation/" }
     ]},
     { "title": "Store Modes", "items": [
       { "label": "Overview", "href": "features/store-modes/" },
@@ -39,6 +38,7 @@
     ]},
     { "title": "Orders & Shipping", "items": [
       { "label": "Order Management", "href": "features/order-management/" },
+      { "label": "EasyPost Setup", "href": "getting-started/easypost-setup/" },
       { "label": "EasyPost Shipping", "href": "features/easypost-shipping/" },
       { "label": "Batch Labels", "href": "features/batch-labels/" },
       { "label": "Webhooks", "href": "features/webhooks/" }
