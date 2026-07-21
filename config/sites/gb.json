@@ -43,6 +43,28 @@
       { "label": "Batch Labels", "href": "features/batch-labels/" },
       { "label": "Webhooks", "href": "features/webhooks/" }
     ]},
+    { "title": "Payouts & Money", "items": [
+      { "label": "Automatic Payouts", "href": "features/automatic-payouts/" },
+      { "label": "Store Credit", "href": "features/store-credit/" },
+      { "label": "Net Reconciliation", "href": "features/net-reconciliation/" }
+    ]},
+    { "title": "Customer Experience", "items": [
+      { "label": "Condition Quiz", "href": "features/condition-quiz/" },
+      { "label": "Quote Expiry", "href": "features/quote-expiry/" },
+      { "label": "My Trade-ins Tab", "href": "features/my-trade-ins/" },
+      { "label": "Design & Branding", "href": "features/design-branding/" }
+    ]},
+    { "title": "Logistics", "items": [
+      { "label": "Shipping Kits", "href": "features/shipping-kits/" },
+      { "label": "QR Drop-off Codes", "href": "features/qr-drop-off/" }
+    ]},
+    { "title": "Operations", "items": [
+      { "label": "Device Details", "href": "features/device-details/" },
+      { "label": "Re-Quote & Photos", "href": "features/re-quote/" },
+      { "label": "Catalog CSV Import", "href": "features/catalog-import/" },
+      { "label": "Resale & Margin Reports", "href": "features/resale-reports/" },
+      { "label": "SMS Notifications", "href": "features/sms-notifications/" }
+    ]},
     { "title": "Configuration", "items": [
       { "label": "Plugin Settings", "href": "configuration/plugin-settings/" },
       { "label": "WooCommerce Tips", "href": "configuration/recommended-woo-settings/" }
