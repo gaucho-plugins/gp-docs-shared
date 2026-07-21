@@ -39,6 +39,7 @@
     ]},
     { "title": "Vendors", "items": [
       { "label": "Connecting Vendor Stripe Accounts", "href": "features/connecting-vendor-stripe-accounts/" },
+      { "label": "Vendor account types", "href": "features/vendor-account-types/" },
       { "label": "Vendor Automation", "href": "features/vendor-automation/", "children": [
         { "label": "Automatic Vendor Products", "href": "features/vendor-automation/automatic-vendor-products/" },
         { "label": "Vendor Payment QR Codes", "href": "features/vendor-automation/vendor-payment-qr-codes/" },
