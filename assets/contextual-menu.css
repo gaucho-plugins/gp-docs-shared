@@ -186,3 +186,40 @@
     max-width: min(22rem, calc(100vw - 1.5rem));
   }
 }
+
+/* ── Fleet-wide custom-development CTA bar (#gp-cta-bar) ──────────────────────
+   The bar itself is rendered at runtime by the fomo-notices worker's cta.ts; this
+   only maps it onto each docs site's own tokens and reserves space for it.
+   Every docs site is dark-themed but with a different palette, so the bar reads
+   from --bg-subtle / --text-primary / --border-default rather than hard-coding.
+   The button inverts that same pair, which is guaranteed high-contrast on any of
+   them — unlike the per-site --primary accent, which ranges from #80CD78 to
+   #2F81F7 and would fail WCAG with white text on the lighter ones. */
+:root {
+  --gp-cta-bg: var(--bg-subtle, #161B22);
+  --gp-cta-fg: var(--text-primary, #E6EDF3);
+  --gp-cta-border: var(--border-default, rgba(255, 255, 255, 0.14));
+  --gp-cta-btn-bg: var(--text-primary, #E6EDF3);
+  --gp-cta-btn-fg: var(--bg-subtle, #161B22);
+}
+
+/* The sidebar is position:sticky at calc(100vh - header) with its own scroll, so a
+   fixed bottom bar would permanently cover the sidebar CTA block at its foot. */
+.sidebar {
+  padding-bottom: calc(2rem + var(--gp-cta-h, 0px));
+}
+
+/* Keep the contextual toast above the bar (it is bottom:1.25rem by default). */
+.gp-contextual-toast {
+  bottom: calc(1.25rem + var(--gp-cta-h, 0px));
+}
+
+/* The mobile drawer is z-index:40 and the bar is 9997, so the bar would otherwise
+   render over an open navigation drawer. */
+@media (max-width: 1024px) {
+  body:has(.sidebar.open) #gp-cta-bar { display: none; }
+}
+
+@media print {
+  #gp-cta-bar { display: none !important; }
+}

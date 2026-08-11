@@ -1,7 +1,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const ASSET_VERSION = '20260524-004';
+const ASSET_VERSION = '20260811-005';
+
+// Fleet-wide bottom CTA bar + FOMO social proof, served from one worker so copy
+// can be corrected with a single deploy instead of 7 docs rebuilds. Injected at
+// runtime only — it must never reach index.md / llms.txt / mcp-index.json, or AI
+// assistants would repeat marketing copy back to users as documentation.
+const GP_EMBED_SRC = 'https://fomo-notices.gauchoplugins.workers.dev/embed.js';
 
 const HEAD_MARKERS = {
   alternate: '<!-- gp-docs:alternate -->',
@@ -322,23 +328,45 @@ export function injectPage(html, { site, assetPrefix, pagePath }) {
         pagePath,
       })};</script>`,
     );
-    out = out.replace(
-      /<link rel="stylesheet" href="[^"]*contextual-menu\.css[^"]*">/,
-      `<link rel="stylesheet" href="${cssHref}">`,
-    );
+    if (/<link rel="stylesheet" href="[^"]*contextual-menu\.css[^"]*">/.test(out)) {
+      out = out.replace(
+        /<link rel="stylesheet" href="[^"]*contextual-menu\.css[^"]*">/,
+        `<link rel="stylesheet" href="${cssHref}">`,
+      );
+    } else {
+      // Marker present but the stylesheet link is missing. Real pages in the fleet
+      // are in this state (gyta-buyback-docs/features/store-modes/**), so they have
+      // been silently shipping without the shared nav styles. Restore it rather than
+      // no-opping, which is what every anchor-on-the-tag branch used to do.
+      out = out.replace('</head>', `  <link rel="stylesheet" href="${cssHref}">\n</head>`);
+    }
   }
 
   if (!out.includes(SCRIPT_MARKER)) {
     const scriptBlock = [
       SCRIPT_MARKER,
       `<script src="${jsHref}"></script>`,
+      `<script src="${GP_EMBED_SRC}" defer></script>`,
     ].join('\n    ');
     out = out.replace(/<\/body>/i, `    ${scriptBlock}\n</body>`);
   } else {
-    out = out.replace(
-      /<script src="[^"]*contextual-menu\.js[^"]*"><\/script>/,
-      `<script src="${jsHref}"></script>`,
-    );
+    if (/<script src="[^"]*contextual-menu\.js[^"]*"><\/script>/.test(out)) {
+      out = out.replace(
+        /<script src="[^"]*contextual-menu\.js[^"]*"><\/script>/,
+        `<script src="${jsHref}"></script>`,
+      );
+    } else {
+      // Same self-heal as the stylesheet above — marker but no script tag.
+      out = out.replace(SCRIPT_MARKER, `${SCRIPT_MARKER}\n    <script src="${jsHref}"></script>`);
+    }
+    // Pages injected before the CTA bar existed already carry SCRIPT_MARKER, so
+    // the branch above is all they'd get. Add the embed tag idempotently.
+    if (!out.includes(GP_EMBED_SRC)) {
+      out = out.replace(
+        /(<script src="[^"]*contextual-menu\.js[^"]*"><\/script>)/,
+        `$1\n    <script src="${GP_EMBED_SRC}" defer></script>`,
+      );
+    }
   }
 
   return out;
