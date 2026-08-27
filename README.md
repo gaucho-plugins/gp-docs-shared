@@ -17,7 +17,7 @@ Each docs repo needs a `gp-docs.config.json`:
 { "site": "bic" }
 ```
 
-Site ids: `bic`, `sic`, `cc`, `gb`, `vi`, `spp`, `lscp`.
+Site ids: `bic`, `sic`, `cc`, `gb`, `vi`, `spp`, `lscp`, `pp`.
 
 ## Site config schema (`config/sites/{id}.json`)
 
@@ -32,9 +32,11 @@ into every `index.html` so the nav lives in **one place per site**.
   "title": "Blocked in China Docs",
   "productName": "Blocked in China",
   "mcpName": "blocked-in-china-docs",
+  "contentUpdatedAt": "2026-08-27T00:00:00Z", // OPTIONAL. Pins reproducible MCP index metadata for a frozen release
   "template": "assets",
   "assetPath": "assets",           // "" for VI which keeps assets at root
   "navStyle": "absolute",          // OPTIONAL. "absolute" → /path/ hrefs (VI). default: relative
+  "externalLinksNewTab": true,      // OPTIONAL. Adds secure new-tab attributes to off-origin HTTP(S) links
   "skills": [],
 
   "header": {
@@ -125,5 +127,6 @@ The worker also falls back to fetching `/mcp-index.json` from each docs origin i
 | GB | https://docs.gytabuyback.com/mcp |
 | VI | https://docs.versioninfoplugin.com/mcp |
 | SPP | https://docs.splitpayplugin.com/mcp |
+| Payment Page | https://docs.paymentpageplugin.com/mcp |
 
 Discovery: `https://{docs-domain}/.well-known/mcp`

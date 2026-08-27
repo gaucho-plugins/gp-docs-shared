@@ -269,6 +269,45 @@ export function injectSidebar(html, { site, rootPrefix, pagePath }) {
   return html.slice(0, after) + insertion + html.slice(after);
 }
 
+/**
+ * Make off-origin HTTP(S) links explicit new-tab links when a site opts in.
+ * Same-origin absolute links and all relative/fragment links remain unchanged.
+ * Existing rel tokens are preserved and de-duplicated.
+ */
+export function enforceExternalLinkPolicy(html, { site }) {
+  if (!site.externalLinksNewTab) return html;
+  const siteOrigin = new URL(site.origin).origin;
+
+  return html.replace(/<a\b([^>]*\bhref=(['"])(https?:\/\/[^'"]+)\2[^>]*)>/gi, (tag, attrs, quote, href) => {
+    let targetUrl;
+    try {
+      targetUrl = new URL(href);
+    } catch {
+      return tag;
+    }
+    if (targetUrl.origin === siteOrigin) return tag;
+
+    let patchedAttrs = attrs;
+    if (/\btarget\s*=\s*(['"])[^'"]*\1/i.test(patchedAttrs)) {
+      patchedAttrs = patchedAttrs.replace(/\btarget\s*=\s*(['"])[^'"]*\1/i, 'target="_blank"');
+    } else {
+      patchedAttrs += ' target="_blank"';
+    }
+
+    const relMatch = /\brel\s*=\s*(['"])([^'"]*)\1/i.exec(patchedAttrs);
+    if (relMatch) {
+      const tokens = new Set(relMatch[2].split(/\s+/).filter(Boolean));
+      tokens.add('noopener');
+      tokens.add('noreferrer');
+      patchedAttrs = patchedAttrs.replace(relMatch[0], `rel="${Array.from(tokens).join(' ')}"`);
+    } else {
+      patchedAttrs += ' rel="noopener noreferrer"';
+    }
+
+    return `<a${patchedAttrs}>`;
+  });
+}
+
 export function syncSharedAssets(sharedRoot, repoRoot, site) {
   const assetDir = site.assetPath ? path.join(repoRoot, site.assetPath) : repoRoot;
   fs.mkdirSync(assetDir, { recursive: true });

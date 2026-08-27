@@ -6,6 +6,7 @@
   "description": "Shared contextual menu, markdown build, and MCP worker for Gaucho Plugins docs sites",
   "scripts": {
     "build": "node scripts/build-docs.mjs",
+    "test": "node scripts/test-external-link-policy.mjs && node scripts/test-mcp-routes.mjs",
     "worker:dev": "cd mcp-worker && wrangler dev",
     "worker:deploy": "cd mcp-worker && wrangler deploy",
     "worker:upload-index": "node scripts/upload-kv-index.mjs"

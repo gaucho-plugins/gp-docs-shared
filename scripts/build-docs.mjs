@@ -11,6 +11,7 @@ import {
   markdownPathForHtml,
 } from './lib/docs-utils.mjs';
 import {
+  enforceExternalLinkPolicy,
   injectHeader,
   injectPage,
   injectSidebar,
@@ -92,7 +93,7 @@ function buildMcpIndex(pages, site, repoRoot) {
     hostname: site.hostname,
     origin: site.origin,
     title: site.title,
-    updatedAt: new Date().toISOString(),
+    updatedAt: site.contentUpdatedAt || new Date().toISOString(),
     pages: pages.map((p) => ({
       path: p.urlPath,
       title: p.title,
@@ -144,6 +145,7 @@ async function main() {
     let patched = injectPage(html, { site, assetPrefix, pagePath: urlPath });
     patched = injectHeader(patched, { site, assetPrefix, rootPrefix });
     patched = injectSidebar(patched, { site, rootPrefix, pagePath: urlPath });
+    patched = enforceExternalLinkPolicy(patched, { site });
     patched = stripFreemiusCheckout(patched);
     patched = stripComponentsJsReference(patched);
     fs.writeFileSync(htmlPath, patched);
