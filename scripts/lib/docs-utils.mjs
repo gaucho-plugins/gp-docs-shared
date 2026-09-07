@@ -22,6 +22,25 @@ export function createTurndown() {
       return '';
     },
   });
+  td.addRule('headingWithCustomId', {
+    filter(node) {
+      return /^H[1-6]$/.test(node.nodeName) && Boolean(node.getAttribute('id'));
+    },
+    replacement(content, node) {
+      const level = Number(node.nodeName.slice(1));
+      const text = content.trim();
+      const naturalId = text
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        .replace(/[`*_~]/g, '')
+        .toLowerCase()
+        .replace(/[^\p{L}\p{N}\s_-]/gu, '')
+        .trim()
+        .replace(/\s+/g, '-');
+      const id = node.getAttribute('id');
+      const anchor = id === naturalId ? '' : `<a id="${id}"></a>\n\n`;
+      return `\n\n${anchor}${'#'.repeat(level)} ${text}\n\n`;
+    },
+  });
   return td;
 }
 
@@ -48,13 +67,13 @@ export function htmlContentToMarkdown(html) {
 }
 
 export function extractPageMeta(html) {
-  const title = html.match(/<title>([^<]+)<\/title>/i)?.[1]?.replace(/\s*[|—–-]\s*[^|—–-]+$/, '').trim() || '';
+  const title = html.match(/<title>([^<]+)<\/title>/i)?.[1]?.replace(/\s*[|—–-]\s*[^|—–-]+$/, '').replace(/&amp;/gi, '&').trim() || '';
   const description = html.match(/<meta name="description" content="([^"]*)"/i)?.[1] || '';
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/i)?.[1] || '';
   const h1 = html.match(/<div class="page-header"[\s\S]*?<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1]
     || html.match(/<div class="content"[\s\S]*?<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1]
     || '';
-  const plainH1 = h1.replace(/<[^>]+>/g, '').trim();
+  const plainH1 = h1.replace(/<[^>]+>/g, '').replace(/&amp;/gi, '&').trim();
   return { title: plainH1 || title, description, canonical };
 }
 
