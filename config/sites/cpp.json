@@ -1,0 +1,329 @@
+{
+  "id": "cpp",
+  "hostname": "docs.chinapaymentsplugin.com",
+  "origin": "https://docs.chinapaymentsplugin.com",
+  "title": "China Payments Plugin Documentation",
+  "productName": "China Payments Plugin",
+  "mcpName": "china-payments-plugin-docs",
+  "ga4MeasurementId": "G-Y4P6670E68",
+  "assetPath": "assets",
+  "skills": [],
+  "externalLinksNewTab": true,
+  "styleVersion": "20260917-001",
+  "footerText": "China Payments Plugin documentation · Gaucho Plugins",
+  "breadcrumbLabels": {
+    "getting-started": "Getting Started",
+    "checkout-flows": "Checkout Flows",
+    "payment-gateways": "Payment Gateways",
+    "payment-methods": "Payment Methods",
+    "checkout-optimizations-pro": "Checkout Optimizations (PRO)",
+    "checkout-optimizations": "Checkout Optimizations",
+    "currencies": "Currencies",
+    "common-error-messages": "Common Error Messages",
+    "troubleshooting": "Troubleshooting",
+    "faqs": "FAQs",
+    "changelog": "Changelog",
+    "zhong-wen-jian-ti": "中文（简体）"
+  },
+  "humanizeOverrides": {
+    "woocommerce": "WooCommerce",
+    "memberpress": "MemberPress",
+    "lifterlms": "LifterLMS",
+    "wechat-pay": "WeChat Pay",
+    "alipay": "Alipay",
+    "unionpay": "UnionPay",
+    "faqs": "FAQs",
+    "stripe": "Stripe",
+    "embeddable-payment-buttons": "Payment Page (payment form)",
+    "simple-membership-plugin": "Simple Membership Plugin"
+  },
+  "header": {
+    "logoIcon": "favicon.png",
+    "logoAlt": "China Payments Plugin",
+    "logoText": "China Payments Plugin Docs",
+    "links": [
+      {
+        "href": "https://chinapaymentsplugin.com/",
+        "label": "Main Site",
+        "hideMobile": true
+      },
+      {
+        "href": "https://chinapaymentsplugin.com/pricing/",
+        "label": "Pricing",
+        "className": "header-buy"
+      },
+      {
+        "href": "https://wordpress.org/plugins/wp-stripe-global-payments/",
+        "label": "Download Free",
+        "className": "header-download-btn"
+      },
+      {
+        "href": "https://gauchoplugins.com/support/",
+        "label": "Support",
+        "newTab": true
+      }
+    ]
+  },
+  "nav": [
+    {
+      "title": "Getting Started",
+      "items": [
+        {
+          "label": "Welcome 👋",
+          "href": ""
+        },
+        {
+          "label": "Quick Setup",
+          "href": "getting-started/setup-process/"
+        },
+        {
+          "label": "Activating Payment Methods",
+          "href": "getting-started/activating-payment-methods/"
+        }
+      ]
+    },
+    {
+      "title": "Checkout Flows",
+      "items": [
+        {
+          "label": "WooCommerce",
+          "href": "checkout-flows/woocommerce/"
+        },
+        {
+          "label": "MemberPress",
+          "href": "checkout-flows/memberpress/"
+        },
+        {
+          "label": "Simple Membership Plugin",
+          "href": "checkout-flows/simple-membership-plugin/"
+        },
+        {
+          "label": "LifterLMS",
+          "href": "checkout-flows/lifterlms/"
+        },
+        {
+          "label": "Payment Page (payment form)",
+          "href": "checkout-flows/embeddable-payment-buttons/"
+        }
+      ]
+    },
+    {
+      "title": "Payment Gateways",
+      "items": [
+        {
+          "label": "Stripe",
+          "href": "payment-gateways/stripe/"
+        },
+        {
+          "label": "Planned Payment Gateways",
+          "href": "payment-gateways/planned-payment-gateways/"
+        }
+      ]
+    },
+    {
+      "title": "Payment Methods",
+      "items": [
+        {
+          "label": "WeChat Pay",
+          "href": "payment-methods/wechat-pay/",
+          "children": [
+            {
+              "label": "WeChat Pay User Experience",
+              "href": "payment-methods/wechat-pay/wechat-pay-user-experience/"
+            }
+          ]
+        },
+        {
+          "label": "Alipay",
+          "href": "payment-methods/alipay/",
+          "children": [
+            {
+              "label": "Alipay User Experience",
+              "href": "payment-methods/alipay/alipay-user-experience/"
+            }
+          ]
+        },
+        {
+          "label": "UnionPay",
+          "href": "payment-methods/unionpay/",
+          "children": [
+            {
+              "label": "UnionPay User Experience",
+              "href": "payment-methods/unionpay/unionpay-user-experience/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Checkout Optimizations (PRO)",
+      "items": [
+        {
+          "label": "Checkout Optimizations",
+          "href": "checkout-optimizations-pro/checkout-optimizations/",
+          "children": [
+            {
+              "label": "Chinese Localization",
+              "href": "checkout-optimizations-pro/checkout-optimizations/chinese-localization/"
+            },
+            {
+              "label": "Multi-Currency Display",
+              "href": "checkout-optimizations-pro/checkout-optimizations/multi-currency-display/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Currencies",
+      "items": [
+        {
+          "label": "Supported Currencies",
+          "href": "currencies/supported-currencies/"
+        }
+      ]
+    },
+    {
+      "title": "Common Error Messages",
+      "items": [
+        {
+          "label": "Common WeChat Pay Error Messages",
+          "href": "common-error-messages/common-wechat-pay-error-messages/"
+        },
+        {
+          "label": "Common Alipay Error Messages",
+          "href": "common-error-messages/common-alipay-error-messages/"
+        },
+        {
+          "label": "Other Errors + Plugin Conflicts",
+          "href": "common-error-messages/other-errors-+-plugin-conflicts/"
+        }
+      ]
+    },
+    {
+      "title": "Troubleshooting",
+      "items": [
+        {
+          "label": "Troubleshooting Steps",
+          "href": "troubleshooting/troubleshooting-steps/"
+        },
+        {
+          "label": "Why are payments for WeChat Pay and Alipay getting refunded?",
+          "href": "troubleshooting/why-are-payments-for-wechat-and-alipay-getting-refunded/"
+        },
+        {
+          "label": "How do I add Gaucho Plugins Support to my Stripe Team?",
+          "href": "troubleshooting/how-do-i-add-gaucho-plugins-support-to-my-stripe-team/"
+        },
+        {
+          "label": "Why isn't Stripe Connect working?",
+          "href": "troubleshooting/why-isnt-stripe-connect-working/"
+        },
+        {
+          "label": "Why are payments failing in Stripe?",
+          "href": "troubleshooting/why-are-payments-failing-in-stripe/"
+        },
+        {
+          "label": "WooCommerce Order Completion",
+          "href": "troubleshooting/woocommerce-order-completion/"
+        }
+      ]
+    },
+    {
+      "title": "FAQs",
+      "items": [
+        {
+          "label": "How do I set up Stripe Webhooks?",
+          "href": "faqs/how-do-i-set-up-stripe-webhooks/"
+        },
+        {
+          "label": "Why can't I activate Alipay or WeChat Pay in my Stripe account?",
+          "href": "faqs/why-cant-i-activate-alipay-or-wechat-pay-in-my-stripe-account/"
+        },
+        {
+          "label": "How do WeChat Pay and Alipay work?",
+          "href": "faqs/how-do-wechat-pay-and-alipay-work/"
+        },
+        {
+          "label": "What is China Payments Plugin?",
+          "href": "faqs/what-is-china-payments-plugin/"
+        },
+        {
+          "label": "How does China Payments Plugin Work?",
+          "href": "faqs/how-does-china-payments-plugin-work/"
+        },
+        {
+          "label": "How long are WeChat Pay QR codes valid?",
+          "href": "faqs/how-long-are-wechat-pay-qr-codes-valid/"
+        },
+        {
+          "label": "What's the total cost of using China Payments Plugin?",
+          "href": "faqs/whats-the-total-cost-of-using-china-payments-plugin/"
+        },
+        {
+          "label": "How do I remove all plugin data on uninstallation?",
+          "href": "faqs/how-do-i-remove-all-plugin-data-on-uninstallation/"
+        },
+        {
+          "label": "How do I join the BETA?",
+          "href": "faqs/how-do-i-join-the-beta/"
+        },
+        {
+          "label": "How do I override the icons used in checkout?",
+          "href": "faqs/how-do-i-override-the-icons-used-in-checkout/"
+        }
+      ]
+    },
+    {
+      "title": "Changelog",
+      "items": [
+        {
+          "label": "Changelog",
+          "href": "changelog/changelog/"
+        }
+      ]
+    },
+    {
+      "title": "中文（简体）",
+      "items": [
+        {
+          "label": "您好 👋",
+          "href": "zhong-wen-jian-ti/"
+        },
+        {
+          "label": "微信支付的用户体验",
+          "href": "zhong-wen-jian-ti/payment-methods/wechat-pay-user-experience/"
+        },
+        {
+          "label": "支付宝用户体验",
+          "href": "zhong-wen-jian-ti/payment-methods/alipay-user-experience/"
+        },
+        {
+          "label": "常见的微信支付错误信息",
+          "href": "zhong-wen-jian-ti/common-error-messages/common-wechat-pay-error-messages/"
+        },
+        {
+          "label": "常见的支付宝错误信息",
+          "href": "zhong-wen-jian-ti/common-error-messages/common-alipay-error-messages/"
+        }
+      ]
+    }
+  ],
+  "sidebarCta": {
+    "label": "Get China Payments Plugin",
+    "primary": {
+      "label": "Download Free",
+      "href": "https://wordpress.org/plugins/wp-stripe-global-payments/"
+    },
+    "secondary": {
+      "label": "Support",
+      "href": "https://gauchoplugins.com/support/",
+      "newTab": true
+    },
+    "tertiary": {
+      "label": "Main Site",
+      "href": "https://chinapaymentsplugin.com/"
+    }
+  },
+  "favicon": "favicon.png"
+}

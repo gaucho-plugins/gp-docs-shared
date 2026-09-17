@@ -60,10 +60,14 @@ export function cleanGitbookMarkdown(raw, pageUrl) {
 }
 
 export function htmlContentToMarkdown(html) {
-  const match = html.match(/<div class="content">([\s\S]*?)<\/div>\s*(?:<div class="page-nav"|<nav class="page-nav"|$)/i);
+  // Rendered-HTML sites wrap page content in <div class="content">; sites built
+  // from markdown by render-markdown-docs.mjs use <article class="content">.
+  // Matching only the <div> form silently produced an EMPTY index.md (and an
+  // empty mcp-index entry) for every markdown-rendered page.
+  const match = html.match(/<(div|article) class="content">([\s\S]*?)<\/\1>\s*(?:<div class="page-nav"|<nav class="page-nav"|<footer class="page-footer"|$)/i);
   if (!match) return '';
   const td = createTurndown();
-  return td.turndown(match[1]).trim();
+  return td.turndown(match[2]).trim();
 }
 
 export function extractPageMeta(html) {
@@ -106,7 +110,9 @@ export function buildPageMarkdown({ repoRoot, htmlPath, html, site }) {
   } else {
     body = htmlContentToMarkdown(html);
   }
-  const url = meta.canonical || `${site.origin}/${path.relative(repoRoot, path.dirname(htmlPath)).replace(/\\/g, '/')}/`;
+  // path.relative() is "" at the repo root, which used to yield `origin//`.
+  const relativeDir = path.relative(repoRoot, path.dirname(htmlPath)).replace(/\\/g, '/');
+  const url = meta.canonical || `${site.origin}/${relativeDir ? `${relativeDir}/` : ''}`;
   const frontmatter = [
     '---',
     `title: ${JSON.stringify(meta.title)}`,
