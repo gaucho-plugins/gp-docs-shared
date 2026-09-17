@@ -16,6 +16,7 @@ const HEAD_MARKERS = {
 };
 
 const SCRIPT_MARKER = '<!-- gp-docs:scripts -->';
+const SEO_MARKER = '<!-- gp-docs:seo -->';
 
 // Centralized header + sidebar markers. When present, the build script
 // regenerates the block between start/end from the site config (single
@@ -342,13 +343,39 @@ export function syncSharedAssets(sharedRoot, repoRoot, site) {
   }
 }
 
+// Canonical/robots/OG/Twitter were hand-authored per repo, so five of eight
+// sites shipped none of them (86 pages) and two shipped no canonical at all.
+// Emit them here, but only the tags a page does not already define, so the
+// sites that hand-authored a richer head (and the markdown-rendered books,
+// which emit their own) are left untouched.
+function injectSeoHead(html, { site, pagePath }) {
+  const canonical = `${site.origin}${pagePath === '/' ? '/' : pagePath}`;
+  const rawTitle = (html.match(/<title>([\s\S]*?)<\/title>/i) || [])[1] || site.title;
+  const title = rawTitle.replace(/\s+/g, ' ').trim();
+  const description = (html.match(/<meta name="description" content="([^"]*)"/i) || [])[1] || '';
+  const additions = [];
+  const has = (re) => re.test(html);
+  if (!has(/<link rel="canonical"/i)) additions.push(`<link rel="canonical" href="${escapeAttr(canonical)}">`);
+  if (!has(/<meta name="robots"/i)) additions.push('<meta name="robots" content="index, follow">');
+  if (!has(/<meta property="og:type"/i)) additions.push('<meta property="og:type" content="article">');
+  if (!has(/<meta property="og:site_name"/i)) additions.push(`<meta property="og:site_name" content="${escapeAttr(site.title)}">`);
+  if (!has(/<meta property="og:title"/i)) additions.push(`<meta property="og:title" content="${escapeAttr(title)}">`);
+  if (!has(/<meta property="og:url"/i)) additions.push(`<meta property="og:url" content="${escapeAttr(canonical)}">`);
+  if (description && !has(/<meta property="og:description"/i)) additions.push(`<meta property="og:description" content="${escapeAttr(description)}">`);
+  if (!has(/<meta name="twitter:card"/i)) additions.push('<meta name="twitter:card" content="summary">');
+  if (!has(/<meta name="twitter:title"/i)) additions.push(`<meta name="twitter:title" content="${escapeAttr(title)}">`);
+  if (description && !has(/<meta name="twitter:description"/i)) additions.push(`<meta name="twitter:description" content="${escapeAttr(description)}">`);
+  if (!additions.length) return html;
+  return html.replace('</head>', `  ${[SEO_MARKER, ...additions].join('\n  ')}\n</head>`);
+}
+
 export function injectPage(html, { site, assetPrefix, pagePath }) {
   const mcpUrl = `${site.origin}/mcp`;
   const markdownHref = './index.md';
   const cssHref = `${assetPrefix}contextual-menu.css?v=${ASSET_VERSION}`;
   const jsHref = `${assetPrefix}contextual-menu.js?v=${ASSET_VERSION}`;
 
-  let out = html;
+  let out = injectSeoHead(html, { site, pagePath });
 
   if (!out.includes(HEAD_MARKERS.meta)) {
     const headInject = [
@@ -370,14 +397,31 @@ export function injectPage(html, { site, assetPrefix, pagePath }) {
     ].join('\n  ');
     out = out.replace('</head>', `  ${headInject}\n</head>`);
   } else {
-    out = out.replace(
-      /<link rel="alternate" type="text\/markdown" href="[^"]*"/,
-      `<link rel="alternate" type="text/markdown" href="${markdownHref}"`,
-    );
-    out = out.replace(
-      /<meta name="gp-docs-mcp" content="[^"]*">/,
-      `<meta name="gp-docs-mcp" content="${mcpUrl}">`,
-    );
+    // Marker present but tag missing is a real state in the fleet
+    // (gyta-buyback-docs/features/store-modes/**), and a bare String.replace
+    // would silently no-op there, so these self-heal like the stylesheet below.
+    if (/<link rel="alternate" type="text\/markdown" href="[^"]*"/.test(out)) {
+      out = out.replace(
+        /<link rel="alternate" type="text\/markdown" href="[^"]*"/,
+        `<link rel="alternate" type="text/markdown" href="${markdownHref}"`,
+      );
+    } else {
+      out = out.replace(
+        HEAD_MARKERS.alternate,
+        `${HEAD_MARKERS.alternate}\n  <link rel="alternate" type="text/markdown" href="${markdownHref}" title="Markdown for AI agents">`,
+      );
+    }
+    if (/<meta name="gp-docs-mcp" content="[^"]*">/.test(out)) {
+      out = out.replace(
+        /<meta name="gp-docs-mcp" content="[^"]*">/,
+        `<meta name="gp-docs-mcp" content="${mcpUrl}">`,
+      );
+    } else {
+      out = out.replace(
+        HEAD_MARKERS.meta,
+        `${HEAD_MARKERS.meta}\n  <meta name="gp-docs-mcp" content="${mcpUrl}">`,
+      );
+    }
     out = out.replace(
       /<script>window\.__GP_DOCS__=[^<]*<\/script>/,
       `<script>window.__GP_DOCS__=${JSON.stringify({
