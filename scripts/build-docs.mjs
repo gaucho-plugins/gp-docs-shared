@@ -12,6 +12,7 @@ import {
 } from './lib/docs-utils.mjs';
 import {
   enforceExternalLinkPolicy,
+  injectAnalytics,
   injectHeader,
   injectPage,
   injectSidebar,
@@ -148,6 +149,7 @@ async function main() {
     patched = enforceExternalLinkPolicy(patched, { site });
     patched = stripFreemiusCheckout(patched);
     patched = stripComponentsJsReference(patched);
+    patched = injectAnalytics(patched, { site });
     fs.writeFileSync(htmlPath, patched);
 
     builtPages.push({
@@ -159,6 +161,13 @@ async function main() {
       markdown,
     });
     console.log(`  ${urlPath} → index.md`);
+  }
+
+  // 404.html is not a docs page (no markdown, not in llms.txt) but still gets the
+  // GA4 tag so broken inbound links show up in reports.
+  const notFoundPath = path.join(repoRoot, '404.html');
+  if (fs.existsSync(notFoundPath)) {
+    fs.writeFileSync(notFoundPath, injectAnalytics(fs.readFileSync(notFoundPath, 'utf8'), { site }));
   }
 
   fs.writeFileSync(path.join(repoRoot, 'llms.txt'), buildLlmsTxt(builtPages, site));

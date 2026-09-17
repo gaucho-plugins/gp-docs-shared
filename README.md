@@ -32,6 +32,7 @@ into every `index.html` so the nav lives in **one place per site**.
   "title": "Blocked in China Docs",
   "productName": "Blocked in China",
   "mcpName": "blocked-in-china-docs",
+  "ga4MeasurementId": "G-93XL8C57T4", // OPTIONAL. Injects the GA4 tag into every page + 404.html; stripped when DOCS_PREVIEW=1
   "contentUpdatedAt": "2026-08-27T00:00:00Z", // OPTIONAL. Pins reproducible MCP index metadata for a frozen release
   "template": "assets",
   "assetPath": "assets",           // "" for VI which keeps assets at root

@@ -308,6 +308,29 @@ export function enforceExternalLinkPolicy(html, { site }) {
   });
 }
 
+// GA4 is configured per site (`ga4MeasurementId`) and lives between its own
+// markers so a rebuild replaces the block instead of stacking a second tag.
+// Preview builds (DOCS_PREVIEW=1) strip it so review traffic never reaches the
+// production property.
+const GA4_START_MARKER = '<!-- gp-docs:ga4-start -->';
+const GA4_END_MARKER = '<!-- gp-docs:ga4-end -->';
+const GA4_BLOCK_RE = /[ \t]*<!-- gp-docs:ga4-start -->[\s\S]*?<!-- gp-docs:ga4-end -->\n?/;
+
+export function injectAnalytics(html, { site }) {
+  const id = site.ga4MeasurementId;
+  const withoutBlock = html.replace(GA4_BLOCK_RE, '');
+  if (!id || process.env.DOCS_PREVIEW === '1') return withoutBlock;
+  if (!/^G-[A-Z0-9]+$/.test(id)) throw new Error(`Invalid ga4MeasurementId for ${site.id}: ${id}`);
+  const block = [
+    GA4_START_MARKER,
+    `<script async src="https://www.googletagmanager.com/gtag/js?id=${id}"></script>`,
+    `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${id}');</script>`,
+    GA4_END_MARKER,
+  ].join('\n  ');
+  if (!/<\/head>/i.test(withoutBlock)) return withoutBlock;
+  return withoutBlock.replace(/<\/head>/i, `  ${block}\n</head>`);
+}
+
 export function syncSharedAssets(sharedRoot, repoRoot, site) {
   const assetDir = site.assetPath ? path.join(repoRoot, site.assetPath) : repoRoot;
   fs.mkdirSync(assetDir, { recursive: true });
