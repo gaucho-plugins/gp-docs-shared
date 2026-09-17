@@ -45,7 +45,7 @@ function normalizePath(p) {
 }
 
 function scorePage(page, terms) {
-  const hay = `${page.title} ${page.description || ''} ${page.markdown}`.toLowerCase();
+  const hay = `${page.title} ${page.description || ''} ${stripFrontmatter(page.markdown)}`.toLowerCase();
   let score = 0;
   for (const t of terms) {
     if (!t) continue;
@@ -55,6 +55,16 @@ function scorePage(page, terms) {
     score += Math.min(count, 10);
   }
   return score;
+}
+
+/**
+ * mcp-index.json stores each page's markdown WITH its YAML frontmatter, whose
+ * title/description/url are already returned as structured fields. Strip it
+ * before searching, snippeting or returning a page, so AI clients get prose
+ * instead of "--- title: ... ---".
+ */
+function stripFrontmatter(text) {
+  return String(text || '').replace(/^\s*---\r?\n[\s\S]*?\r?\n---\r?\n?/, '').trimStart();
 }
 
 function snippet(text, terms, max = 220) {
@@ -107,7 +117,7 @@ function handleToolCall(name, args, index) {
         path: page.path,
         title: page.title,
         url: page.url,
-        snippet: snippet(page.markdown, terms),
+        snippet: snippet(stripFrontmatter(page.markdown), terms),
       }));
     return { content: [{ type: 'text', text: JSON.stringify({ query, results: ranked }, null, 2) }] };
   }
@@ -118,7 +128,7 @@ function handleToolCall(name, args, index) {
     if (!page) {
       return { content: [{ type: 'text', text: `Page not found: ${path}` }], isError: true };
     }
-    return { content: [{ type: 'text', text: page.markdown }] };
+    return { content: [{ type: 'text', text: stripFrontmatter(page.markdown) }] };
   }
 
   return { content: [{ type: 'text', text: `Unknown tool: ${name}` }], isError: true };

@@ -146,8 +146,25 @@ function removeFirstHeading(markdown) {
   return markdown.replace(/^#\s+.+\n?/m, '');
 }
 
+// GitBook exports sprinkle `&#x20;` (and friends) through prose. Decode before
+// any text is used as a description: inferDescription's `[*_`>#|]` strip would
+// otherwise turn "&#x20;" into a visible "& x20;".
+function decodeEntities(text) {
+  return String(text)
+    .replace(/&#x([0-9a-f]+);?/gi, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);?/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)))
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&mdash;/gi, '-')
+    .replace(/&ndash;/gi, '-')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&amp;/gi, '&');
+}
+
 function inferDescription(markdown, fallback) {
-  const withoutBlocks = markdown
+  const withoutBlocks = decodeEntities(markdown)
     .replace(/```[\s\S]*?```/g, '')
     .replace(/\{%[\s\S]*?%\}/g, '')
     .replace(/^#{1,6}\s+.*$/gm, '')
@@ -164,6 +181,10 @@ function inferDescription(markdown, fallback) {
 function preprocessGitBook(markdown) {
   const replacements = [];
   let body = markdown.replace(/&#x20;/g, ' ');
+  // ...including when it was swallowed by an autolink's delimiter, which made
+  // `<https://brandonfire.com.&#x20>;` render as a dead host.
+  body = body.replace(/(<https?:\/\/[^>\s]*?)\.?&#x20;?(>)/gi, '$1$2');
+  body = body.replace(/(\]\([^)\s]*?)\.?&#x20;?(\))/gi, '$1$2');
 
   body = body.replace(
     /<figure>\s*<img\s+src=(['"])(.*?)\1\s+alt=(['"])(.*?)\3\s*>\s*<figcaption>\s*<p>(.*?)<\/p>\s*<\/figcaption>\s*<\/figure>/gis,
@@ -246,6 +267,10 @@ function sourceTargetForUrl(rawUrl, sourceFile) {
       const absolute = path.resolve(repoRoot, rootPath.replace(/^\/+/, ''));
       if (routeBySource.has(absolute)) return `${routeBySource.get(absolute)}${rootSuffix}`;
     }
+    // Point at the canonical (trailing-slash) form when this is a real route, so
+    // an in-content link does not cost the reader a 308 hop.
+    const normalized = normalizeRoute(rootPath);
+    if (knownRoutes.has(normalized)) return `${normalized}${rootSuffix}`;
     return trimmed;
   }
 
@@ -483,8 +508,8 @@ function htmlDocument(page, index, pages) {
       <header class="page-header">
         <div class="page-header-main">
           ${breadcrumbs.visible ? `<nav class="breadcrumb" aria-label="Breadcrumb">${breadcrumbs.visible}</nav>` : ''}
-          <h1>${escapeHtml(page.title)}</h1>
-          <p class="page-description">${escapeHtml(page.description)}</p>${versionLine}
+          <h1>${escapeHtml(page.title)}</h1>${page.descriptionInferred ? '' : `
+          <p class="page-description">${escapeHtml(page.description)}</p>`}${versionLine}
         </div>
       </header>
       <article class="content">${page.content}</article>
@@ -532,6 +557,10 @@ for (const entry of manifest.sourcePages) {
     alternates: entry.alternates || [],
     description: entry.description || attributes.description
       || inferDescription(contentMarkdown, `${title} documentation for ${productName}.`),
+    // True when the description was lifted from the body rather than authored.
+    // Such a description must not also be printed as the visible subtitle, or
+    // the page opens with the same sentence twice.
+    descriptionInferred: !(entry.description || attributes.description),
     sourceRobots,
     robots: isPreview ? 'noindex, nofollow' : sourceRobots,
     content: renderFragment(contentMarkdown, sourceFile),

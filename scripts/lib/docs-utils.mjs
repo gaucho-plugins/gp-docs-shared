@@ -60,6 +60,9 @@ export function cleanGitbookMarkdown(raw, pageUrl) {
 }
 
 export function htmlContentToMarkdown(html) {
+  // Drop decorative, aria-hidden glyphs (e.g. the hint bullet) so a callout does
+  // not become a lone "●" line in the markdown AI clients read.
+  html = html.replace(/<span[^>]*aria-hidden="true"[^>]*>[\s\S]*?<\/span>/gi, '');
   // Rendered-HTML sites wrap page content in <div class="content">; sites built
   // from markdown by render-markdown-docs.mjs use <article class="content">.
   // Matching only the <div> form silently produced an EMPTY index.md (and an
@@ -70,9 +73,30 @@ export function htmlContentToMarkdown(html) {
   return td.turndown(match[2]).trim();
 }
 
+// Decode HTML entities so the machine-readable surfaces (index.md frontmatter,
+// mcp-index.json, llms-full.txt) carry real text. Previously only `&amp;` was
+// handled, which shipped raw `&#x20;` / `&mdash;` to AI clients.
+export function decodeHtmlEntities(text) {
+  return String(text)
+    .replace(/&#x([0-9a-f]+);?/gi, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);?/g, (_, dec) => String.fromCodePoint(parseInt(dec, 10)))
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&mdash;/gi, '-')
+    .replace(/&ndash;/gi, '-')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#39;|&apos;/gi, "'")
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&amp;/gi, '&');
+}
+
 export function extractPageMeta(html) {
-  const title = html.match(/<title>([^<]+)<\/title>/i)?.[1]?.replace(/\s*[|—–-]\s*[^|—–-]+$/, '').replace(/&amp;/gi, '&').trim() || '';
-  const description = html.match(/<meta name="description" content="([^"]*)"/i)?.[1] || '';
+  const title = decodeHtmlEntities(
+    html.match(/<title>([^<]+)<\/title>/i)?.[1]?.replace(/\s*[|—–-]\s*[^|—–-]+$/, '') || '',
+  ).trim();
+  // Tolerate attribute order/quoting rather than one exact literal form.
+  const descTag = html.match(/<meta[^>]*name=["']?description["']?[^>]*>/i)?.[0] || '';
+  const description = decodeHtmlEntities(descTag.match(/content=["']([^"']*)["']/i)?.[1] || '');
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/i)?.[1] || '';
   const h1 = html.match(/<div class="page-header"[\s\S]*?<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1]
     || html.match(/<div class="content"[\s\S]*?<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1]

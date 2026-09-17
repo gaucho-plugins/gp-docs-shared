@@ -352,7 +352,10 @@ function injectSeoHead(html, { site, pagePath }) {
   const canonical = `${site.origin}${pagePath === '/' ? '/' : pagePath}`;
   const rawTitle = (html.match(/<title>([\s\S]*?)<\/title>/i) || [])[1] || site.title;
   const title = rawTitle.replace(/\s+/g, ' ').trim();
-  const description = (html.match(/<meta name="description" content="([^"]*)"/i) || [])[1] || '';
+  // Attribute order and quoting vary across the fleet's hand-authored heads, so
+  // match the tag first and then pull content out of it.
+  const descTag = (html.match(/<meta[^>]*name=["']?description["']?[^>]*>/i) || [])[0] || '';
+  const description = (descTag.match(/content=["']([^"']*)["']/i) || [])[1] || '';
   const additions = [];
   const has = (re) => re.test(html);
   if (!has(/<link rel="canonical"/i)) additions.push(`<link rel="canonical" href="${escapeAttr(canonical)}">`);
