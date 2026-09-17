@@ -1,0 +1,57 @@
+{
+  "id": "gpd",
+  "hostname": "docs.gauchoplugins.com",
+  "origin": "https://docs.gauchoplugins.com",
+  "title": "Gaucho Plugins Docs",
+  "productName": "Gaucho Plugins",
+  "mcpName": "gaucho-plugins-docs",
+  "ga4MeasurementId": "G-VWCY1VYE8J",
+  "assetPath": "assets",
+  "favicon": "favicon.png",
+  "skills": [],
+  "externalLinksNewTab": true,
+  "styleVersion": "20260917-001",
+  "footerText": "Gaucho Plugins documentation",
+  "omitAbout": true,
+  "publisherName": "Gaucho Plugins",
+  "publisherUrl": "https://gauchoplugins.com/",
+  "breadcrumbLabels": {},
+  "humanizeOverrides": {
+    "our-plugins": "Our Plugins",
+    "get-support": "Get Support",
+    "how-to-troubleshoot-wordpress-plugins": "How to Troubleshoot WordPress Plugins",
+    "managing-your-plugin-purchase": "Managing Your Plugin Purchase",
+    "feature-requests-and-custom-projects": "Feature Requests & Custom Projects"
+  },
+  "header": {
+    "logoIcon": "favicon.png",
+    "logoAlt": "Gaucho Plugins",
+    "logoText": "Gaucho Plugins Docs",
+    "links": [
+      { "href": "https://gauchoplugins.com/", "label": "Main Site", "hideMobile": true },
+      { "href": "https://gauchoplugins.com/#plugins", "label": "Our Plugins", "className": "header-buy" },
+      { "href": "https://gauchoplugins.com/account/", "label": "Account", "hideMobile": true },
+      { "href": "https://gauchoplugins.com/support/", "label": "Support", "newTab": true }
+    ]
+  },
+  "nav": [
+    { "title": "Getting Started", "items": [
+      { "label": "Welcome 👋", "href": "" },
+      { "label": "Our Plugins", "href": "our-plugins/" }
+    ]},
+    { "title": "Working With Us", "items": [
+      { "label": "Managing Your Plugin Purchase", "href": "managing-your-plugin-purchase/" },
+      { "label": "Feature Requests & Custom Projects", "href": "feature-requests-and-custom-projects/" }
+    ]},
+    { "title": "Support", "items": [
+      { "label": "How to Troubleshoot WordPress Plugins", "href": "how-to-troubleshoot-wordpress-plugins/" },
+      { "label": "Get Support", "href": "get-support/" }
+    ]}
+  ],
+  "sidebarCta": {
+    "label": "Need a hand?",
+    "primary": { "label": "Get Support", "href": "https://gauchoplugins.com/support/", "newTab": true },
+    "secondary": { "label": "Our Plugins", "href": "https://gauchoplugins.com/#plugins" },
+    "tertiary": { "label": "Main Site", "href": "https://gauchoplugins.com/" }
+  }
+}

@@ -404,11 +404,14 @@ export function injectPage(html, { site, assetPrefix, pagePath }) {
     }
   }
 
+  // The fleet CTA bar is Gaucho Plugins marketing; a non-GP book (e.g. the
+  // Brand on Fire client docs) opts out with "fleetEmbed": false.
+  const wantsFleetEmbed = site.fleetEmbed !== false;
   if (!out.includes(SCRIPT_MARKER)) {
     const scriptBlock = [
       SCRIPT_MARKER,
       `<script src="${jsHref}"></script>`,
-      `<script src="${GP_EMBED_SRC}" defer></script>`,
+      ...(wantsFleetEmbed ? [`<script src="${GP_EMBED_SRC}" defer></script>`] : []),
     ].join('\n    ');
     out = out.replace(/<\/body>/i, `    ${scriptBlock}\n</body>`);
   } else {
@@ -423,12 +426,16 @@ export function injectPage(html, { site, assetPrefix, pagePath }) {
     }
     // Pages injected before the CTA bar existed already carry SCRIPT_MARKER, so
     // the branch above is all they'd get. Add the embed tag idempotently.
-    if (!out.includes(GP_EMBED_SRC)) {
+    if (wantsFleetEmbed && !out.includes(GP_EMBED_SRC)) {
       out = out.replace(
         /(<script src="[^"]*contextual-menu\.js[^"]*"><\/script>)/,
         `$1\n    <script src="${GP_EMBED_SRC}" defer></script>`,
       );
     }
+  }
+
+  if (!wantsFleetEmbed) {
+    out = out.replace(new RegExp(`\\s*<script src="${GP_EMBED_SRC.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}" defer></script>`, 'g'), '');
   }
 
   return out;

@@ -1,0 +1,43 @@
+{
+  "id": "bofd",
+  "hostname": "docs.brandonfire.com",
+  "origin": "https://docs.brandonfire.com",
+  "title": "Brand on Fire Docs",
+  "productName": "Brand on Fire",
+  "mcpName": "brandonfire-docs",
+  "ga4MeasurementId": "G-PVNKH3B6EH",
+  "assetPath": "assets",
+  "favicon": "favicon.svg",
+  "skills": [],
+  "externalLinksNewTab": true,
+  "styleVersion": "20260917-001",
+  "footerText": "Brand on Fire documentation",
+  "omitAbout": true,
+  "publisherName": "Brand on Fire, LLC",
+  "publisherUrl": "https://brandonfire.com/",
+  "fleetEmbed": false,
+  "breadcrumbLabels": { "access-rights": "Access Rights" },
+  "humanizeOverrides": { "cloudflare": "Cloudflare" },
+  "header": {
+    "logoIcon": "favicon.svg",
+    "logoAlt": "Brand on Fire",
+    "logoText": "Brand on Fire Docs",
+    "links": [
+      { "href": "https://brandonfire.com/", "label": "Main Site", "hideMobile": true },
+      { "href": "https://brandonfire.com/contact/", "label": "Contact", "className": "header-buy" }
+    ]
+  },
+  "nav": [
+    { "title": "Getting Started", "items": [
+      { "label": "Welcome 👋", "href": "" }
+    ]},
+    { "title": "Access Rights", "items": [
+      { "label": "Cloudflare", "href": "access-rights/cloudflare/" }
+    ]}
+  ],
+  "sidebarCta": {
+    "label": "Work with us",
+    "primary": { "label": "Contact Brand on Fire", "href": "https://brandonfire.com/contact/" },
+    "secondary": { "label": "Main Site", "href": "https://brandonfire.com/" }
+  }
+}

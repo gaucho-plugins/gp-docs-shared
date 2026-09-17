@@ -26,6 +26,12 @@
     { "pattern": "docs.splitpayplugin.com/.well-known/mcp", "zone_name": "splitpayplugin.com" },
     { "pattern": "docs.paymentpageplugin.com/mcp", "zone_name": "paymentpageplugin.com" },
     { "pattern": "docs.paymentpageplugin.com/.well-known/mcp", "zone_name": "paymentpageplugin.com" },
+    { "pattern": "docs.chinapaymentsplugin.com/mcp", "zone_name": "chinapaymentsplugin.com" },
+    { "pattern": "docs.chinapaymentsplugin.com/.well-known/mcp", "zone_name": "chinapaymentsplugin.com" },
+    { "pattern": "docs.gauchoplugins.com/mcp", "zone_name": "gauchoplugins.com" },
+    { "pattern": "docs.gauchoplugins.com/.well-known/mcp", "zone_name": "gauchoplugins.com" },
+    { "pattern": "docs.brandonfire.com/mcp", "zone_name": "brandonfire.com" },
+    { "pattern": "docs.brandonfire.com/.well-known/mcp", "zone_name": "brandonfire.com" },
     { "pattern": "docs.customerportalplugin.com/mcp", "zone_name": "customerportalplugin.com" },
     { "pattern": "docs.customerportalplugin.com/.well-known/mcp", "zone_name": "customerportalplugin.com" }
   ]
