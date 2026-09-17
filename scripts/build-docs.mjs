@@ -94,7 +94,10 @@ function buildMcpIndex(pages, site, repoRoot) {
     hostname: site.hostname,
     origin: site.origin,
     title: site.title,
-    updatedAt: site.contentUpdatedAt || new Date().toISOString(),
+    // Falling back to now() made every rebuild rewrite mcp-index.json even when
+    // nothing changed, so six repos showed a timestamp-only diff on each build.
+    // The newest page's mtime is stable across rebuilds of unchanged content.
+    updatedAt: site.contentUpdatedAt || newestPageMtime(builtPages),
     pages: pages.map((p) => ({
       path: p.urlPath,
       title: p.title,
@@ -104,6 +107,18 @@ function buildMcpIndex(pages, site, repoRoot) {
     })),
     skills,
   };
+}
+
+/** Newest source-page mtime, so an unchanged rebuild is byte-identical. */
+function newestPageMtime(pages) {
+  let newest = 0;
+  for (const p of pages) {
+    try {
+      const m = fs.statSync(p.htmlPath).mtimeMs;
+      if (m > newest) newest = m;
+    } catch {}
+  }
+  return new Date(newest || 0).toISOString();
 }
 
 function buildSitemapMarkdown(pages, site) {

@@ -96,7 +96,7 @@ export function extractPageMeta(html) {
   ).trim();
   // Tolerate attribute order/quoting rather than one exact literal form.
   const descTag = html.match(/<meta[^>]*name=["']?description["']?[^>]*>/i)?.[0] || '';
-  const description = decodeHtmlEntities(descTag.match(/content=["']([^"']*)["']/i)?.[1] || '');
+  const description = decodeHtmlEntities(descTag.match(/content=(["'])([\s\S]*?)\1/i)?.[2] || '');
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/i)?.[1] || '';
   const h1 = html.match(/<div class="page-header"[\s\S]*?<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1]
     || html.match(/<div class="content"[\s\S]*?<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1]

@@ -355,7 +355,7 @@ function injectSeoHead(html, { site, pagePath }) {
   // Attribute order and quoting vary across the fleet's hand-authored heads, so
   // match the tag first and then pull content out of it.
   const descTag = (html.match(/<meta[^>]*name=["']?description["']?[^>]*>/i) || [])[0] || '';
-  const description = (descTag.match(/content=["']([^"']*)["']/i) || [])[1] || '';
+  const description = (descTag.match(/content=(["'])([\s\S]*?)\1/i) || [])[2] || '';
   const additions = [];
   const has = (re) => re.test(html);
   if (!has(/<link rel="canonical"/i)) additions.push(`<link rel="canonical" href="${escapeAttr(canonical)}">`);
