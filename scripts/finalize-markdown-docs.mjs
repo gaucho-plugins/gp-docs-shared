@@ -76,11 +76,11 @@ fs.writeFileSync(
   path.join(distRoot, 'robots.txt'),
   isPreview
     ? 'User-agent: *\nDisallow: /\n'
-    : `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`,
+    : `# Search engines, AI answer engines and AI model training are all welcome.\n# Content signals: https://contentsignals.org/\nUser-agent: *\nContent-Signal: search=yes, ai-input=yes, ai-train=yes\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`,
 );
 
 // llms-full.txt: the whole corpus in one fetch, for agents that cannot crawl.
-const fullText = [`# ${siteTitle} — full documentation corpus`, ''];
+const fullText = [`# ${siteTitle}: full documentation corpus`, ''];
 if (buildManifest.productVersion) {
   fullText.push(`> Applies to ${productName} ${buildManifest.productVersion}.`, '');
 }
