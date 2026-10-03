@@ -6,7 +6,7 @@
   "productName": "Payment Page",
   "mcpName": "payment-page-docs",
   "ga4MeasurementId": "G-7VJH17DPVD",
-  "contentUpdatedAt": "2026-08-27T00:00:00Z",
+  "contentUpdatedAt": "2026-10-03T00:00:00Z",
   "template": "assets",
   "assetPath": "assets",
   "externalLinksNewTab": true,
@@ -15,70 +15,165 @@
     "logoAlt": "Payment Page",
     "logoText": "Payment Page Documentation",
     "links": [
-      { "href": "https://paymentpageplugin.com/", "label": "Main Site", "hideMobile": true, "newTab": true },
-      { "href": "https://paymentpageplugin.com/pricing/", "label": "Pricing", "className": "header-buy", "newTab": true },
-      { "href": "https://wordpress.org/plugins/payment-page/", "label": "Download Free", "className": "header-download-btn", "newTab": true },
-      { "href": "https://paymentpageplugin.com/support/", "label": "Support", "newTab": true }
+      {
+        "href": "https://paymentpageplugin.com/",
+        "label": "Main Site",
+        "hideMobile": true,
+        "newTab": true
+      },
+      {
+        "href": "https://paymentpageplugin.com/pricing/",
+        "label": "Pricing",
+        "className": "header-buy",
+        "newTab": true
+      },
+      {
+        "href": "https://wordpress.org/plugins/payment-page/",
+        "label": "Download Free",
+        "className": "header-download-btn",
+        "newTab": true
+      },
+      {
+        "href": "https://paymentpageplugin.com/support/",
+        "label": "Support",
+        "newTab": true
+      }
     ]
   },
   "nav": [
-    { "title": "Getting Started", "items": [
-      { "label": "Welcome", "href": "" },
-      { "label": "Quick Setup", "href": "getting-started/setting-up-payment-page/" },
-      { "label": "Troubleshooting", "href": "getting-started/troubleshooting/" }
-    ]},
-    { "title": "Pricing Options", "items": [
-      { "label": "Plans & Pricing", "href": "pricing-options/plans-pricing-options/" },
-      { "label": "Subscriptions & Currencies", "href": "pricing-options/subscription-currency-options/" },
-      { "label": "Custom Payment Amounts", "href": "pricing-options/custom-payment-amounts/" },
-      { "label": "Setup Fee", "href": "pricing-options/setup-fee/" }
-    ]},
-    { "title": "Forms & Styling", "items": [
-      { "label": "Style & Design Options", "href": "styling-options/style-design-options/" },
-      { "label": "Prefill Form Fields", "href": "features/prefill-form-fields-query-strings/" },
-      { "label": "Form Actions on Submit", "href": "features/form-actions-on-submit/", "children": [
-        { "label": "Confirmation Email", "href": "features/form-actions-on-submit/confirmation-email/" },
-        { "label": "Redirect", "href": "features/form-actions-on-submit/redirect/" },
-        { "label": "Dynamic Message", "href": "features/form-actions-on-submit/dynamic-message/" },
-        { "label": "HTTP Requests", "href": "features/form-actions-on-submit/http-requests/" }
-      ]}
-    ]},
-    { "title": "Stripe", "items": [
-      { "label": "Overview", "href": "payment-gateways/stripe/", "children": [
-        { "label": "Stripe Connect", "href": "payment-gateways/stripe/connect/" },
-        { "label": "Webhook Configuration", "href": "payment-gateways/stripe/stripe-webhook-configuration/" },
-        { "label": "Credit & Debit Cards", "href": "payment-gateways/stripe/credit-+-debit-cards/" },
-        { "label": "ACH Direct Debit", "href": "payment-gateways/stripe/ach-direct-debit/" },
-        { "label": "SEPA Direct Debit", "href": "payment-gateways/stripe/sepa-direct-debit/" },
-        { "label": "Google Pay", "href": "payment-gateways/stripe/google-pay/" },
-        { "label": "Apple Pay", "href": "payment-gateways/stripe/apple-pay/" },
-        { "label": "Alipay", "href": "payment-gateways/stripe/alipay/" },
-        { "label": "WeChat Pay", "href": "payment-gateways/stripe/wechat-pay/" }
-      ]}
-    ]},
-    { "title": "PayPal", "items": [
-      { "label": "Overview", "href": "payment-gateways/paypal/", "children": [
-        { "label": "PayPal Setup", "href": "payment-gateways/paypal/paypal-setup/" },
-        { "label": "Webhook Configuration", "href": "payment-gateways/paypal/paypal-webhook-configuration/" }
-      ]}
-    ]},
-    { "title": "FAQs", "items": [
-      { "label": "Beta Versions", "href": "faqs/how-can-i-sign-up-for-beta-versions/" },
-      { "label": "Total Cost", "href": "faqs/whats-the-total-cost-of-using-the-plugin/" },
-      { "label": "Stripe Team Access", "href": "faqs/how-do-i-add-gaucho-plugins-to-my-stripe-team/" }
-    ]},
-    { "title": "Developer Reference", "items": [
-      { "label": "REST API", "href": "advanced-configuration/rest-api/" },
-      { "label": "Hooks & Filters", "href": "advanced-configuration/hooks-and-filters/" },
-      { "label": "System Requirements", "href": "advanced-configuration/php-versions-supported/" },
-      { "label": "Known Plugin Conflicts", "href": "advanced-configuration/known-plugin-conflicts/" },
-      { "label": "Changelog", "href": "changelog/changelog/" }
-    ]}
+    {
+      "title": "Getting Started",
+      "items": [
+        {
+          "label": "Welcome",
+          "href": ""
+        },
+        {
+          "label": "Quick Setup",
+          "href": "getting-started/setting-up-payment-page/"
+        },
+        {
+          "label": "Managing Payment Forms",
+          "href": "getting-started/managing-payment-forms/"
+        },
+        {
+          "label": "Troubleshooting",
+          "href": "getting-started/troubleshooting/"
+        }
+      ]
+    },
+    {
+      "title": "Building Forms",
+      "items": [
+        {
+          "label": "Plans & Pricing",
+          "href": "pricing-options/plans-pricing-options/"
+        },
+        {
+          "label": "Order Bumps, Products & Upsells",
+          "href": "features/order-bumps-products-upsells/"
+        },
+        {
+          "label": "Style & Design Options",
+          "href": "styling-options/style-design-options/"
+        },
+        {
+          "label": "Prefill Form Fields",
+          "href": "features/prefill-form-fields-query-strings/"
+        },
+        {
+          "label": "After-Payment Actions",
+          "href": "features/form-actions-on-submit/"
+        }
+      ]
+    },
+    {
+      "title": "Growing Sales",
+      "items": [
+        {
+          "label": "Analytics",
+          "href": "features/analytics/"
+        },
+        {
+          "label": "Abandoned-Cart Reminders",
+          "href": "features/abandoned-cart-reminders/"
+        }
+      ]
+    },
+    {
+      "title": "Payment Gateways",
+      "items": [
+        {
+          "label": "Stripe",
+          "href": "payment-gateways/stripe/",
+          "children": [
+            {
+              "label": "Payment Methods",
+              "href": "payment-gateways/stripe/payment-methods/"
+            },
+            {
+              "label": "Stripe Webhook",
+              "href": "payment-gateways/stripe/stripe-webhook-configuration/"
+            }
+          ]
+        },
+        {
+          "label": "PayPal",
+          "href": "payment-gateways/paypal/"
+        }
+      ]
+    },
+    {
+      "title": "Help",
+      "items": [
+        {
+          "label": "FAQ",
+          "href": "faqs/"
+        },
+        {
+          "label": "Changelog",
+          "href": "changelog/changelog/"
+        }
+      ]
+    },
+    {
+      "title": "Developer Reference",
+      "items": [
+        {
+          "label": "REST API",
+          "href": "advanced-configuration/rest-api/"
+        },
+        {
+          "label": "Hooks & Filters",
+          "href": "advanced-configuration/hooks-and-filters/"
+        },
+        {
+          "label": "System Requirements",
+          "href": "advanced-configuration/php-versions-supported/"
+        },
+        {
+          "label": "Known Plugin Conflicts",
+          "href": "advanced-configuration/known-plugin-conflicts/"
+        }
+      ]
+    }
   ],
   "sidebarCta": {
     "label": "Get Payment Page",
-    "primary": { "label": "Download Free", "href": "https://wordpress.org/plugins/payment-page/", "newTab": true },
-    "secondary": { "label": "Support", "href": "https://paymentpageplugin.com/support/", "newTab": true },
-    "tertiary": { "label": "Main Site", "href": "https://paymentpageplugin.com/", "newTab": true }
+    "primary": {
+      "label": "Download Free",
+      "href": "https://wordpress.org/plugins/payment-page/",
+      "newTab": true
+    },
+    "secondary": {
+      "label": "Support",
+      "href": "https://paymentpageplugin.com/support/",
+      "newTab": true
+    },
+    "tertiary": {
+      "label": "Main Site",
+      "href": "https://paymentpageplugin.com/",
+      "newTab": true
+    }
   }
 }
