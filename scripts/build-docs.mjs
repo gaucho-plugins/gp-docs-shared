@@ -122,7 +122,7 @@ async function main() {
   const opts = parseArgs(process.argv);
   const repoRoot = opts.repo;
   const siteId = opts.site || readSiteId(repoRoot);
-  const site = loadSiteConfig(sharedRoot, siteId);
+  const site = loadSiteConfig(sharedRoot, siteId, repoRoot);
 
   console.log(`Building GP docs assets for ${site.title} (${repoRoot})`);
 

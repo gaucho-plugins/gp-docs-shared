@@ -38,7 +38,7 @@ const repoRoot = opts.repo;
 const distRoot = path.join(repoRoot, 'dist');
 const siteId = opts.site
   || JSON.parse(fs.readFileSync(path.join(repoRoot, 'gp-docs.config.json'), 'utf8')).site;
-const site = loadSiteConfig(sharedRoot, siteId);
+const site = loadSiteConfig(sharedRoot, siteId, repoRoot);
 const manifestPath = path.join(repoRoot, 'docs-manifest.json');
 if (!fs.existsSync(manifestPath)) {
   console.error(`Missing ${manifestPath}. The route contract is required so live URLs cannot drift.`);

@@ -124,7 +124,6 @@ The worker also falls back to fetching `/mcp-index.json` from each docs origin i
 |--------|---------|
 | BIC | https://docs.blockedinchinaplugin.com/mcp |
 | SIC | https://docs.speedinchinaplugin.com/mcp |
-| CC | https://docs.cognitivecartplugin.com/mcp |
 | GB | https://docs.gytabuyback.com/mcp |
 | VI | https://docs.versioninfoplugin.com/mcp |
 | SPP | https://docs.splitpayplugin.com/mcp |

@@ -148,8 +148,11 @@ export function buildPageMarkdown({ repoRoot, htmlPath, html, site }) {
   return `${frontmatter}\n${body}\n`;
 }
 
-export function loadSiteConfig(sharedRoot, siteId) {
-  const configPath = path.join(sharedRoot, 'config/sites', `${siteId}.json`);
+export function loadSiteConfig(sharedRoot, siteId, repoRoot) {
+  const localConfig = repoRoot && path.join(repoRoot, 'gp-docs.site.json');
+  const configPath = localConfig && fs.existsSync(localConfig)
+    ? localConfig
+    : path.join(sharedRoot, 'config/sites', `${siteId}.json`);
   if (!fs.existsSync(configPath)) {
     throw new Error(`Unknown site id: ${siteId}`);
   }
